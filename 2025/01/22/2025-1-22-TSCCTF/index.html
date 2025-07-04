@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="NPC,NPCMike,NPCMike&#39;s blog,NPCMike&#39;s Hexo blog,NPCMike&#39;s Hexo theme,NPCMike&#39;s Hexo theme landscape,NPCMike&#39;s Hexo theme next,blog,hexo,hexo blog,hexo theme,hexo-theme-landscape,hexo-theme-next,hexo-theme-matery,hexo-theme-icarus,hexo-theme-archer">
+    
+    <meta name="author" content="NPCMike">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://npcmike.github.io/2025/01/22/2025-1-22-tscctf/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TSCCTF write up (賽後解)">
+<meta property="og:url" content="https://npcmike.github.io/2025/01/22/2025-1-22-TSCCTF/index.html">
+<meta property="og:site_name" content="NPC&#39;S blog">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale">
+<meta property="og:image" content="https://npcmike.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-01-22T09:40:45.000Z">
+<meta property="article:modified_time" content="2025-04-30T04:18:13.182Z">
+<meta property="article:author" content="Mike">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="REV">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npcmike.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="../../../../images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="../../../../images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            TSCCTF write up (賽後解) | NPC&#39;S blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="../../../../css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"npcmike.github.io","root":"/","language":"zh"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["Lv.999","Lv.99","Lv.9","Lv.1"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推薦閱讀","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Who am I ?","subtitle":{"text":["Who cares ................"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":"https://github.com/NPCMike","instagram":"https://www.instagram.com/fang_.0103/# your Instagram URL","zhihu":null,"twitter":null,"email":"NPC940103@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"tags":{"path":"/tags","icon":"fa-regular fa-tags"},"ls":{"path":"/archives","icon":"fa-regular fa-archive"},"Whoami":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":false}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/12/31 10:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                NPC&#39;S blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="../../../../index.html"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    ACCUEIL
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="../../../../tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    TAGS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="../../../../archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    LS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="../../../../about"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    WHOAMI
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="../../../../index.html"
+                        >
+                            <span>
+                                ACCUEIL
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="../../../../tags"
+                        >
+                            <span>
+                                TAGS
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="../../../../archives"
+                        >
+                            <span>
+                                LS
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="../../../../about"
+                        >
+                            <span>
+                                WHOAMI
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="../../../../archives"
+                        >
+                            <span>Archives</span>
+                            <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="../../../../tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="../../../../categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="../../../../tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">13</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="../../../../categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Catégories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="../../../../archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">TSCCTF write up (賽後解)</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="../../../../images/redefine-avatar.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">NPCMike</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv.99</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-01-22 17:40:45</span>
+        <span class="mobile">2025-01-22 17:40:45</span>
+        <span class="hover-info">Créé</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-04-30 12:18:13</span>
+            <span class="mobile">2025-04-30 12:18:13</span>
+            <span class="hover-info">Mis à jour</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../../../../tags/CTF/">CTF</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="../../../../tags/REV/">REV</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="../../../../tags/writeup/">writeup</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h1 id="REV"><a href="#REV" class="headerlink" title="REV"></a>REV</h1><details>
+    <summary>目錄</summary>
+
+<ul>
+<li>Reverse<ul>
+<li>What_Happened</li>
+<li>Chill Checker</li>
+<li>Gateway to the Reverse</li>
+<li>Meoware</li>
+</ul>
+</li>
+</ul>
+</details>
+
+<h2 id="What-Happened"><a href="#What-Happened" class="headerlink" title="What_Happened"></a>What_Happened</h2><p>雖然題目說不用用靜態分析直接用動態，但我還是稍微用了ida一下，以下是靜態完的結果</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_1.png"
+                      alt="What_Happened 2"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_2.png"
+                      alt="What_Happened 2"
+                ></p>
+<p>這裡是我覺得的重點，所以我接下來就直接去看了<code>enc</code>跟<code>dec</code>兩個函式</p>
+<h2 id="Chill-Checker"><a href="#Chill-Checker" class="headerlink" title="Chill_Checker"></a>Chill_Checker</h2><p>先打開<code>ida</code> 做逆向分析，可知他會先輸入長度為8的<code>Input</code> ，再經過7次<code>complex_function</code> 加密，要等於”SGZIYIHW”(要顛倒，原因是此執行檔是<code>little-endian</code> 所以儲存順序會顛倒</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_3.png"
+                      alt="Chill 3"
+                ></p>
+<p>以下可以有兩種方式逆向</p>
+<h3 id="靜態逆向"><a href="#靜態逆向" class="headerlink" title="靜態逆向"></a>靜態逆向</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_4.png"
+                      alt="Chill 4"
+                ></p>
+<p>透過觀察<code>main</code> 可知輸入的<code>Input</code> 每個字元都會逐一經過<code>complex_function</code>加密，所以可以得到以下示意圖：</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Input -&gt; complex_function -&gt; ”SGZIYIHW”<br></code></pre></td></tr></table></figure></div>
+
+<p>再觀察<code>complex_function</code> 可得到以下重點</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_5.png"
+                      alt="alt text"
+                ></p>
+<h3 id="綠色：Input-要在’A’-65-’Z’-89-之間"><a href="#綠色：Input-要在’A’-65-’Z’-89-之間" class="headerlink" title="綠色：Input 要在’A’(65) ~ ’Z’(89)之間"></a>綠色：Input 要在’A’(65) ~ ’Z’(89)之間</h3><h3 id="藍色：為加密演算法，所以可得以下公式"><a href="#藍色：為加密演算法，所以可得以下公式" class="headerlink" title="藍色：為加密演算法，所以可得以下公式"></a>藍色：為加密演算法，所以可得以下公式</h3><blockquote>
+<p>((a1 - 65 + 31 * a2) % 26 + 65) &#x3D; [SGZIYIHW]<br>做逆向求 a1：<br>(a1 - 65 + 31 * a2) % 26 &#x3D; [SGZIYIHW] - 65<br>a1 - 65 + 31 * a2 &#x3D; [SGZIYIHW] - 65 + 26<em>k<br>a1 &#x3D; [SGZIYIHW] - 65 + 26</em>k + 65 - 31 * a2<br>a1 &#x3D; [SGZIYIHW] + 26*k - 31 * a2</p>
+</blockquote>
+<p>以他做一個exploit.py</p>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">Output = <span class="hljs-string">&quot;SGZIYIHW&quot;</span><br>Input = <span class="hljs-string">&quot;&quot;</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">dec_func</span>(<span class="hljs-params">a1 , a2</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">chr</span>((<span class="hljs-built_in">ord</span>(a1)-<span class="hljs-number">65</span>-a2*<span class="hljs-number">31</span>)%<span class="hljs-number">26</span>+<span class="hljs-number">65</span>)<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">8</span>):<br>    Input += dec_func(Output[i] , (i+<span class="hljs-number">8</span>))<br><br><span class="hljs-built_in">print</span>(Input)<br></code></pre></td></tr></table></figure></div>
+
+<p>即可得到真正要輸入的字串：</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">TSCCTF\REV&gt; python exploit.py<span class="hljs-string">&quot;</span><br><span class="hljs-string">ENBFQVPZ</span><br></code></pre></td></tr></table></figure></div>
+
+<p>再重新啟動elf檔並輸入”ENBFQVPZ”即可得到flag</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">┌──(kali㉿kali)-[~/Downloads]<br>└─$ ./chill<br>Whisper your code: ENBFQVPZ<br>Man, you<span class="hljs-string">&#x27;re really on fire!</span><br><span class="hljs-string">Your flag is: TSC&#123;t4k3_1t_3a$y&#125;</span><br></code></pre></td></tr></table></figure></div>
+
+<h3 id="動態逆向"><a href="#動態逆向" class="headerlink" title="動態逆向"></a>動態逆向</h3><p>用<code>ida</code> 觀察<code>main</code>可知他會將原始字串加密後由<code>strcmp</code>去進行比較，所以只要隨便輸入東西在比較時把暫存器內的值進行更動即可</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">gef➤  disas main<br></code></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_6.png"
+                      alt="alt text"
+                ></p>
+<h3 id="紅色範圍：complex-function-加密，結束後到藍色strcmp做比較"><a href="#紅色範圍：complex-function-加密，結束後到藍色strcmp做比較" class="headerlink" title="紅色範圍：complex_function 加密，結束後到藍色strcmp做比較"></a>紅色範圍：<code>complex_function</code> 加密，結束後到藍色<code>strcmp</code>做比較</h3><h3 id="藍色範圍：比較函式。對他做斷點，以便後續竄改加密結果"><a href="#藍色範圍：比較函式。對他做斷點，以便後續竄改加密結果" class="headerlink" title="藍色範圍：比較函式。對他做斷點，以便後續竄改加密結果"></a>藍色範圍：比較函式。對他做斷點，以便後續竄改加密結果</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">gef➤  b *0x000055555555544f<br><span class="hljs-comment"># 在0x000055555555544f &lt;+187&gt;:   call   0x555555555070 &lt;strcmp@plt&gt;這行做斷點</span><br></code></pre></td></tr></table></figure></div>
+
+<p>並開始程式，輸入範圍在<code>A~Z</code>之間且為長度為8個字元即可</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">gef➤ r<br>Whisper your code: <br>gef➤ ABCDABCD<br></code></pre></td></tr></table></figure></div>
+
+<p>此時會看到<code>strcmp@plt</code>的參數會傳入的值，並對其進行修改</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_7.png"
+                      alt="alt text"
+                ></p>
+<p>我們要改的值是<code>$rdi</code>的值 ( by calling convention, 呼叫慣例，修改完後繼續執行程式即可通過檢查並成功取得flag</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">gef➤ <span class="hljs-built_in">set</span> &#123;char[9]&#125; 0x00007fffffffdc90 = <span class="hljs-string">&quot;SGZIYIHW&quot;</span><br>gef➤ c<br>Your flag is: TSC&#123;t4k3_1t_3a<span class="hljs-variable">$y</span>&#125;<br></code></pre></td></tr></table></figure></div>
+
+<h2 id="Gateway-to-the-Reverse"><a href="#Gateway-to-the-Reverse" class="headerlink" title="Gateway_to_the_Reverse"></a>Gateway_to_the_Reverse</h2><h3 id="方法一-gdb-gef"><a href="#方法一-gdb-gef" class="headerlink" title="方法一 ( gdb-gef"></a>方法一 ( gdb-gef</h3><p>先用<code>ida</code>打開並觀察發現(<del>看不懂</del>，<code>s2</code> 是單獨計算的，與輸入是多少無關，所以只要在<code>strcmp</code> 時，設個斷點，觀察s2即可看到輸入要等於什麼</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">gef➤ b strcmp@plt<br>gef➤ r<br>Enter the access key: <br>gef➤ ABCDABCD<br></code></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_8.png"
+                      alt="alt text"
+                ></p>
+<p>即可得知<code>flag</code>了</p>
+<h3 id="方法二-ltrace"><a href="#方法二-ltrace" class="headerlink" title="方法二 ( ltrace"></a>方法二 ( ltrace</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_9.png"
+                      alt="alt text"
+                ></p>
+<p>因為它會把函式之間的關係都顯示得很清楚，自然也能看到傳入的參數為何</p>
+<h2 id="Meoware"><a href="#Meoware" class="headerlink" title="Meoware"></a>Meoware</h2><p>經過觀察後重點在於它會有一段，所以只要rand() &#x3D;&#x3D; 0 即可結束迴圈</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_10.png"
+                      alt="alt text"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_11.png"
+                      alt="alt text"
+                ></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">v3 = <span class="hljs-keyword">time</span>(0LL);<br>srand(v3);<br><span class="hljs-keyword">while</span> ( rand() )<br>&#123;<br>  show pic<br>&#125;<br></code></pre></td></tr></table></figure></div>
+
+<p>再來結束迴圈後出現了<code>std::operator&lt;&lt;&lt;std::char_traits&lt;char&gt;&gt;(&amp;_bss_start, &quot;flag is:&quot;);</code> ，所以很明顯我們要先結束迴圈並繼續執行到最後</p>
+<p>所以到<code>gef</code>裡面進行動態分析：</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">gef➤  starti<br>gef➤  i func<br>...<br>main<br>...<br>gef➤ b main<br>gef➤ c<br>gef➤ disas [main]<br></code></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_12.png"
+                      alt="alt text"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="image_13.png"
+                      alt="alt text"
+                ></p>
+<p>由此可知他迴圈是先跳到<code>&lt;main+593&gt;</code> 接著進行比較，<code>test   eax,eax</code> ，如果不為 0，則回到迴圈裡，所以在此設斷點，再把eax設為0即可跳出迴圈並執行程式。</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">gef➤ b *main+598<br>gef➤ c <span class="hljs-comment"># 這時看到 eax 並不等於 0</span><br>gef➤ <span class="hljs-built_in">set</span> <span class="hljs-variable">$eax</span> = 0 <span class="hljs-comment"># 即可使迴圈不符合條件</span><br>gef➤ c<br>flag is:TSC&#123;Bobo_milk-tea_black-carbon&#125;<br></code></pre></td></tr></table></figure></div>
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Titre:</strong> TSCCTF write up (賽後解)</li>
+        <li><strong>Auteur:</strong> NPCMike</li>
+        <li><strong>Créé à
+                :</strong> 2025-01-22 17:40:45</li>
+        
+            <li>
+                <strong>Mis à jour à
+                    :</strong> 2025-04-30 12:18:13
+            </li>
+        
+        <li>
+            <strong>Lien:</strong> https://npcmike.github.io/2025/01/22/2025-1-22-TSCCTF/
+        </li>
+        <li>
+            <strong>
+                Licence:
+            </strong>
+            
+
+            
+                Cette œuvre est sous licence <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="../../../../tags/CTF/">#CTF</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="../../../../tags/REV/">#REV</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="../../../../tags/writeup/">#writeup</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="../../../04/19/CDM_Data_and_Recover/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">CDM (Data &amp; Recover)</span>
+						<span class="post-nav-item">Articles précédents</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="../../02/2025-1-2-Assembly-Language-Assembly-Language/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Assembly-Language for pwn</span>
+						<span class="post-nav-item">Articles suivants</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Commentaires
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '../../../../js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">Sur cette page</div>
+		<div class="page-title">TSCCTF write up (賽後解)</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#REV"><span class="nav-text">REV</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Happened"><span class="nav-text">What_Happened</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chill-Checker"><span class="nav-text">Chill_Checker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9C%E6%85%8B%E9%80%86%E5%90%91"><span class="nav-text">靜態逆向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B6%A0%E8%89%B2%EF%BC%9AInput-%E8%A6%81%E5%9C%A8%E2%80%99A%E2%80%99-65-%E2%80%99Z%E2%80%99-89-%E4%B9%8B%E9%96%93"><span class="nav-text">綠色：Input 要在’A’(65) ~ ’Z’(89)之間</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%97%8D%E8%89%B2%EF%BC%9A%E7%82%BA%E5%8A%A0%E5%AF%86%E6%BC%94%E7%AE%97%E6%B3%95%EF%BC%8C%E6%89%80%E4%BB%A5%E5%8F%AF%E5%BE%97%E4%BB%A5%E4%B8%8B%E5%85%AC%E5%BC%8F"><span class="nav-text">藍色：為加密演算法，所以可得以下公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8B%95%E6%85%8B%E9%80%86%E5%90%91"><span class="nav-text">動態逆向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%85%E8%89%B2%E7%AF%84%E5%9C%8D%EF%BC%9Acomplex-function-%E5%8A%A0%E5%AF%86%EF%BC%8C%E7%B5%90%E6%9D%9F%E5%BE%8C%E5%88%B0%E8%97%8D%E8%89%B2strcmp%E5%81%9A%E6%AF%94%E8%BC%83"><span class="nav-text">紅色範圍：complex_function 加密，結束後到藍色strcmp做比較</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%97%8D%E8%89%B2%E7%AF%84%E5%9C%8D%EF%BC%9A%E6%AF%94%E8%BC%83%E5%87%BD%E5%BC%8F%E3%80%82%E5%B0%8D%E4%BB%96%E5%81%9A%E6%96%B7%E9%BB%9E%EF%BC%8C%E4%BB%A5%E4%BE%BF%E5%BE%8C%E7%BA%8C%E7%AB%84%E6%94%B9%E5%8A%A0%E5%AF%86%E7%B5%90%E6%9E%9C"><span class="nav-text">藍色範圍：比較函式。對他做斷點，以便後續竄改加密結果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gateway-to-the-Reverse"><span class="nav-text">Gateway_to_the_Reverse</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80-gdb-gef"><span class="nav-text">方法一 ( gdb-gef</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C-ltrace"><span class="nav-text">方法二 ( ltrace</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Meoware"><span class="nav-text">Meoware</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">NPCMike</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        9  posts au total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITEURS</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">NOMBRE TOTAL DE PAGES VUES</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog en ligne depuis <span class="odometer" id="runtime_days" ></span> Jours <span class="odometer" id="runtime_hours"></span> Hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="recherche..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="js/build/libs/Swup.min.js"></script>
+
+<script src="js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="js/build/utils.js" type="module"></script>
+
+<script src="js/build/main.js" type="module"></script>
+
+<script src="js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="js/build/tools/runtime.js"></script>
+
+    
+<script src="js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="js/build/libs/Typed.min.js"></script>
+
+  
+<script src="js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+	
+</body>
+
+</html>

@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="NPC,NPCMike,NPCMike&#39;s blog,NPCMike&#39;s Hexo blog,NPCMike&#39;s Hexo theme,NPCMike&#39;s Hexo theme landscape,NPCMike&#39;s Hexo theme next,blog,hexo,hexo blog,hexo theme,hexo-theme-landscape,hexo-theme-next,hexo-theme-matery,hexo-theme-icarus,hexo-theme-archer">
+    
+    <meta name="author" content="NPCMike">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://npcmike.github.io/2025/01/02/2025-1-2-assembly-language-assembly-language/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Assembly-Language for pwn">
+<meta property="og:url" content="https://npcmike.github.io/2025/01/02/2025-1-2-Assembly-Language-Assembly-Language/index.html">
+<meta property="og:site_name" content="NPC&#39;S blog">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale">
+<meta property="og:image" content="https://npcmike.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-01-02T02:05:16.000Z">
+<meta property="article:modified_time" content="2025-04-30T04:14:25.043Z">
+<meta property="article:author" content="Mike">
+<meta property="article:tag" content="Assembly-Language">
+<meta property="article:tag" content="pwn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npcmike.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="../../../../images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="../../../../images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Assembly-Language for pwn | NPC&#39;S blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="../../../../css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"npcmike.github.io","root":"/","language":"zh"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["Lv.999","Lv.99","Lv.9","Lv.1"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推薦閱讀","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Who am I ?","subtitle":{"text":["Who cares ................"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":"https://github.com/NPCMike","instagram":"https://www.instagram.com/fang_.0103/# your Instagram URL","zhihu":null,"twitter":null,"email":"NPC940103@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"tags":{"path":"/tags","icon":"fa-regular fa-tags"},"ls":{"path":"/archives","icon":"fa-regular fa-archive"},"Whoami":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":false}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/12/31 10:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                NPC&#39;S blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="../../../../index.html"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    ACCUEIL
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="../../../../tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    TAGS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="../../../../archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    LS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="../../../../about"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    WHOAMI
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="../../../../index.html"
+                        >
+                            <span>
+                                ACCUEIL
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="../../../../tags"
+                        >
+                            <span>
+                                TAGS
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="../../../../archives"
+                        >
+                            <span>
+                                LS
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="../../../../about"
+                        >
+                            <span>
+                                WHOAMI
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="../../../../archives"
+                        >
+                            <span>Archives</span>
+                            <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="../../../../tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="../../../../categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="../../../../tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">13</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="../../../../categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Catégories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="../../../../archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Assembly-Language for pwn</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="../../../../images/redefine-avatar.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">NPCMike</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv.99</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-01-02 10:05:16</span>
+        <span class="mobile">2025-01-02 10:05:16</span>
+        <span class="hover-info">Créé</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-04-30 12:14:25</span>
+            <span class="mobile">2025-04-30 12:14:25</span>
+            <span class="hover-info">Mis à jour</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../../../../tags/Assembly-Language/">Assembly-Language</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="../../../../tags/pwn/">pwn</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<details>
+	<summary>目錄</summary>
+
+<ul>
+<li><a href="#%E4%BB%8B%E7%B4%B9%E7%B5%84%E8%AA%9E">介紹組語</a><ul>
+<li><a href="#%E7%B5%84%E5%90%88%E8%AA%9E%E8%A8%80%E7%9A%84%E5%84%AA%E5%8B%A2%E5%8C%85%E6%8B%AC">組合語言的優勢包括</a></li>
+<li><a href="#%E5%9C%A8-pwn-%E9%A0%98%E5%9F%9F%E7%B5%84%E5%90%88%E8%AA%9E%E8%A8%80%E5%B8%B8%E7%94%A8%E6%96%BC">在 PWN 領域，組合語言常用於</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BB%8B%E7%B4%B9%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95">介紹基本語法</a><ul>
+<li><a href="#%E6%8C%87%E4%BB%A4%E7%B5%90%E6%A7%8B">指令結構</a></li>
+<li><a href="#%E6%9A%AB%E5%AD%98%E5%99%A8">暫存器</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4">基本指令</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BB%8B%E7%B4%B9-pwn">介紹 PWN</a></li>
+<li><a href="#%E4%BB%8B%E7%B4%B9%E7%B5%84%E8%AA%9E%E5%9C%A8-pwn-%E7%9A%84%E4%BD%9C%E7%94%A8">介紹組語在 PWN 的作用</a></li>
+<li><a href="#pwn-%E7%9A%84%E4%BE%8B%E5%AD%90">PWN 的例子</a></li>
+<li><a href="#%E7%B5%90%E8%AB%96">結論</a></li>
+<li><a href="#%E5%BC%95%E7%94%A8">引用</a></li>
+</ul>
+</details>
+
+<h2 id="介紹組語"><a href="#介紹組語" class="headerlink" title="介紹組語"></a>介紹組語</h2><p>組合語言（Assembly Language）是一種<strong>低階程式語言</strong>，是介於機器碼與高階語言(java、python、C&#x2F;C++…)之間的橋樑，與高階語言相比，組合語言能更精確地控制硬體行為，供對 CPU、記憶體及周邊設備的完全訪問。在學習 PWN（漏洞利用）時，熟悉組合語言有助於分析程式執行流程、理解漏洞成因以及構造漏洞利用方法。</p>
+<h3 id="組合語言的優勢包括"><a href="#組合語言的優勢包括" class="headerlink" title="組合語言的優勢包括"></a>組合語言的優勢包括</h3><ul>
+<li>高效能與精確性：直接操作硬體，無多餘的抽象層。</li>
+<li>全面可見性：能查看程式的每一步執行細節。</li>
+<li>彈性控制：允許開發者手動優化程式，實現高效能目標。</li>
+</ul>
+<h3 id="在-PWN-領域，組合語言常用於"><a href="#在-PWN-領域，組合語言常用於" class="headerlink" title="在 PWN 領域，組合語言常用於"></a>在 PWN 領域，組合語言常用於</h3><ul>
+<li>漏洞排查與調試：使用工具（如 GDB）觀察程式執行的組合語言指令。</li>
+<li>Shellcode 編寫：設計小型惡意程式碼以實現特定目標。</li>
+<li>ROP（Return-Oriented Programming）：拼湊現有指令來執行任意程式邏輯。</li>
+</ul>
+<h2 id="介紹基本語法"><a href="#介紹基本語法" class="headerlink" title="介紹基本語法"></a>介紹基本語法</h2><h3 id="指令結構"><a href="#指令結構" class="headerlink" title="指令結構"></a>指令結構</h3><p>組合語言的每一行程式碼通常包含三部分：</p>
+<ul>
+<li>標籤（Label）：用於指示位置，類似於函數或變數名稱。</li>
+<li>操作碼（Opcode）：執行的指令，如 mov、add、jmp 等。</li>
+<li>操作數（Operands）：指令操作的目標，如暫存器、內存地址或立即數。</li>
+</ul>
+<h5 id="以下為範例"><a href="#以下為範例" class="headerlink" title="以下為範例"></a>以下為範例</h5><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs asm">section .data<br>	msg db &#x27;Hello, World!&#x27;, 0<br><br>section .text<br>	global _start<br><br>_start:<br>	mov rax, 1       ; 系統呼叫號：write<br>	mov rdi, 1       ; 第一參數：stdout<br>	mov rsi, msg     ; 第二參數：字串地址<br>	mov rdx, 13      ; 第三參數：字串長度<br>	syscall          ; 呼叫內核<br></code></pre></td></tr></table></figure></div>
+<h3 id="暫存器"><a href="#暫存器" class="headerlink" title="暫存器"></a>暫存器</h3><p>常見的 x86-64 暫存器功能如下</p>
+<ul>
+<li><p><strong>RAX</strong>：通常用於系統呼叫編號與函數返回值</p>
+</li>
+<li><p><strong>RDI, RSI, RDX</strong>：依序存放第一到第三個參數</p>
+</li>
+<li><p><strong>RSP, RBP</strong>：分別是堆疊指標與基底指標(這個在做bof時很重要)</p>
+<h3 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h3>  <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs asm">; 資料搬移指令<br>mov rax, rbx       ; rax = rbx<br>mov rdx, 0x10      ; rdx = 0x10 (16)<br>lea rax, [rbx+4]   ; rax = rbx+4 的地址<br><br>; 算術操作指令<br>add rax, rbx       ; rax += rbx<br>sub rax, 5         ; rax -= 5<br>imul rax, rbx      ; rax = rax * rbx<br>mov rax, 10        ; rax = 10<br>mov rbx, 3         ; rbx = 3<br>idiv rbx           ; 商存於 rax, 餘數存於 rdx<br><br>; 邏輯運算指令<br>and rax, 0xFF      ; rax &amp;= 0xFF<br>or rax, rbx        ; rax |= rbx<br>xor rax, rax       ; rax = 0（快速清零）<br>not rax            ; rax = ~rax<br><br>; 比較與跳轉指令<br>cmp rax, rbx       ; 比較 rax 與 rbx<br>je label           ; 若相等，跳轉到 label<br>jne label          ; 若不相等，跳轉到 label<br>jg label           ; 若 rax &gt; rbx，跳轉<br>jl label           ; 若 rax &lt; rbx，跳轉<br><br>; 堆疊操作指令<br>push rax           ; 將 rax 壓入堆疊<br>pop rbx            ; 從堆疊彈出值至 rbx<br>call function      ; 呼叫 function<br>ret                ; 返回到呼叫處<br><br>; 流程控制指令<br>jmp label          ; 無條件跳轉到 label<br>mov rcx, 5         ; 設置迴圈次數<br>loop_start:<br>; 迴圈內代碼<br>loop loop_start    ; 若 rcx &gt; 0，減1並跳轉<br><br>; 進階指令<br>mov rax, 60        ; 系統呼叫號：exit<br>xor rdi, rdi       ; 退出狀態 0<br>syscall            ; 呼叫內核<br>nop                ; 不執行任何操作<br><br></code></pre></td></tr></table></figure></div></li>
+</ul>
+<h2 id="介紹-PWN"><a href="#介紹-PWN" class="headerlink" title="介紹 PWN"></a>介紹 PWN</h2><p>PWN（漏洞利用，Exploit）是網路安全領域的一個重要主題，主要指的是利用程式中的漏洞來執行不法操作。這些漏洞通常是由開發者在設計或編寫程式時留下的缺陷，例如緩衝區溢位（Buffer Overflow）或格式字串漏洞（Format String Vulnerability）等。在進行 PWN 攻擊時，攻擊者通常會利用這些漏洞來獲取執行程式的控制權，進而執行任意程式碼。PWN 是現今許多CTF競賽和安全測試中常見的領域。組合語言在這其中扮演了關鍵的角色，因為它能精確操作硬體，並能有效利用底層漏洞。</p>
+<h2 id="介紹組語在-PWN-的作用"><a href="#介紹組語在-PWN-的作用" class="headerlink" title="介紹組語在 PWN 的作用"></a>介紹組語在 PWN 的作用</h2><p>在 PWN 攻擊中，組合語言扮演著非常重要的角色，因為它允許攻擊者直接操控程式的執行過程。理解組合語言可以幫助攻擊者更好地理解漏洞是如何產生的，並且如何精確地利用這些漏洞。</p>
+<ul>
+<li>漏洞分析：攻擊者在分析程式時，會通過組合語言來查看程式的指令，理解程式如何運行。這有助於發現程式中可能存在的漏洞，並且能夠確定哪些位置可以被覆蓋或操控。</li>
+<li>漏洞利用：在漏洞利用的過程中，組合語言幫助攻擊者製作 shellcode、設計 ROP chain，甚至操作記憶體，以繞過各種安全機制（如堆疊保護、ASLR 等）。</li>
+<li>系統呼叫：在進行攻擊時，攻擊者需要觸發系統呼叫（syscall），以便與操作系統交互或控制系統資源。組合語言提供了直接執行這些操作的能力。</li>
+</ul>
+<h2 id="PWN-的例子"><a href="#PWN-的例子" class="headerlink" title="PWN 的例子"></a>PWN 的例子</h2><p>在 PWN 中常見的攻擊方式</p>
+<ul>
+<li><p><strong>緩衝區溢位（Buffer Overflow）</strong></p>
+<p>  攻擊者通過在緩衝區內寫入超過預期範圍的資料來覆蓋其他重要資料或控制流指令，進而控制程式的執行流程。組合語言在這裡幫助攻擊者理解如何利用記憶體結構，並精確設置跳轉指令。</p>
+</li>
+<li><p><strong>格式字串漏洞（Format String Vulnerability）</strong></p>
+<p>  攻擊者利用格式字串錯誤，改變程序的內存內容，並從中讀取或寫入數據。組合語言可用於深入理解程式如何處理格式字串，並如何構造惡意的輸入。</p>
+</li>
+<li><p><strong>Return-Oriented Programming（ROP）</strong></p>
+<p>  這是一種利用已經存在於程式中的指令來進行攻擊的方法，攻擊者不需要直接執行 shellcode，而是利用現有的指令序列來達到目的。這需要對組合語言的深入理解，並利用組合語言指令來精心設計控制流程。</p>
+</li>
+<li><p><strong>Heap Overflow</strong></p>
+<p>  攻擊者利用堆積區域的漏洞來操控堆中的資料，通常與程式的記憶體管理有關。此類攻擊在組合語言層面需要對內存分配、指標操作有非常精確的控制。</p>
+</li>
+</ul>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>組合語言是 PWN 攻擊中不可或缺的一部分，它使攻擊者能夠精確操控程式的執行流程，並有效利用底層漏洞。無論是在分析漏洞、編寫 shellcode 還是設計 ROP 攻擊，組合語言都提供了攻擊者極大的靈活性和控制力。理解組合語言對於學習和掌握 PWN 技術至關重要，並且能夠幫助我們更好地理解漏洞的根源，並設計更有效的防禦機制。</p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Titre:</strong> Assembly-Language for pwn</li>
+        <li><strong>Auteur:</strong> NPCMike</li>
+        <li><strong>Créé à
+                :</strong> 2025-01-02 10:05:16</li>
+        
+            <li>
+                <strong>Mis à jour à
+                    :</strong> 2025-04-30 12:14:25
+            </li>
+        
+        <li>
+            <strong>Lien:</strong> https://npcmike.github.io/2025/01/02/2025-1-2-Assembly-Language-Assembly-Language/
+        </li>
+        <li>
+            <strong>
+                Licence:
+            </strong>
+            
+
+            
+                Cette œuvre est sous licence <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="../../../../tags/Assembly-Language/">#Assembly-Language</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="../../../../tags/pwn/">#pwn</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="../../22/2025-1-22-TSCCTF/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">TSCCTF write up (賽後解)</span>
+						<span class="post-nav-item">Articles précédents</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="../../../../2024/12/31/hexo-pages/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">利用 hexo + github 架設靜態網站</span>
+						<span class="post-nav-item">Articles suivants</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Commentaires
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '../../../../js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">Sur cette page</div>
+		<div class="page-title">Assembly-Language for pwn</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%B4%B9%E7%B5%84%E8%AA%9E"><span class="nav-text">介紹組語</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%84%E5%90%88%E8%AA%9E%E8%A8%80%E7%9A%84%E5%84%AA%E5%8B%A2%E5%8C%85%E6%8B%AC"><span class="nav-text">組合語言的優勢包括</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-PWN-%E9%A0%98%E5%9F%9F%EF%BC%8C%E7%B5%84%E5%90%88%E8%AA%9E%E8%A8%80%E5%B8%B8%E7%94%A8%E6%96%BC"><span class="nav-text">在 PWN 領域，組合語言常用於</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%B4%B9%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95"><span class="nav-text">介紹基本語法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%B5%90%E6%A7%8B"><span class="nav-text">指令結構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%AB%E5%AD%98%E5%99%A8"><span class="nav-text">暫存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4"><span class="nav-text">基本指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%B4%B9-PWN"><span class="nav-text">介紹 PWN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%B4%B9%E7%B5%84%E8%AA%9E%E5%9C%A8-PWN-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-text">介紹組語在 PWN 的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PWN-%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-text">PWN 的例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-text">結論</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">NPCMike</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        9  posts au total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITEURS</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">NOMBRE TOTAL DE PAGES VUES</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog en ligne depuis <span class="odometer" id="runtime_days" ></span> Jours <span class="odometer" id="runtime_hours"></span> Hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="recherche..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="js/build/libs/Swup.min.js"></script>
+
+<script src="js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="js/build/utils.js" type="module"></script>
+
+<script src="js/build/main.js" type="module"></script>
+
+<script src="js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="js/build/tools/runtime.js"></script>
+
+    
+<script src="js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="js/build/libs/Typed.min.js"></script>
+
+  
+<script src="js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+	
+</body>
+
+</html>

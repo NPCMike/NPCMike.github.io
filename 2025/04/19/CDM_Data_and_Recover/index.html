@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="NPC,NPCMike,NPCMike&#39;s blog,NPCMike&#39;s Hexo blog,NPCMike&#39;s Hexo theme,NPCMike&#39;s Hexo theme landscape,NPCMike&#39;s Hexo theme next,blog,hexo,hexo blog,hexo theme,hexo-theme-landscape,hexo-theme-next,hexo-theme-matery,hexo-theme-icarus,hexo-theme-archer">
+    
+    <meta name="author" content="NPCMike">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://npcmike.github.io/2025/04/19/cdm_data_and_recover/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CDM (Data &amp; Recover)">
+<meta property="og:url" content="https://npcmike.github.io/2025/04/19/CDM_Data_and_Recover/index.html">
+<meta property="og:site_name" content="NPC&#39;S blog">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale">
+<meta property="og:image" content="https://npcmike.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-04-19T01:44:10.000Z">
+<meta property="article:modified_time" content="2025-04-30T04:21:38.659Z">
+<meta property="article:author" content="Mike">
+<meta property="article:tag" content="CDM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npcmike.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="../../../../images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="../../../../images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            CDM (Data &amp; Recover) | NPC&#39;S blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="../../../../css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"npcmike.github.io","root":"/","language":"zh"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["Lv.999","Lv.99","Lv.9","Lv.1"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推薦閱讀","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Who am I ?","subtitle":{"text":["Who cares ................"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":"https://github.com/NPCMike","instagram":"https://www.instagram.com/fang_.0103/# your Instagram URL","zhihu":null,"twitter":null,"email":"NPC940103@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"tags":{"path":"/tags","icon":"fa-regular fa-tags"},"ls":{"path":"/archives","icon":"fa-regular fa-archive"},"Whoami":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":false}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/12/31 10:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                NPC&#39;S blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="../../../../index.html"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    ACCUEIL
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="../../../../tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    TAGS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="../../../../archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    LS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="../../../../about"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    WHOAMI
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="../../../../index.html"
+                        >
+                            <span>
+                                ACCUEIL
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="../../../../tags"
+                        >
+                            <span>
+                                TAGS
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="../../../../archives"
+                        >
+                            <span>
+                                LS
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="../../../../about"
+                        >
+                            <span>
+                                WHOAMI
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="../../../../archives"
+                        >
+                            <span>Archives</span>
+                            <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="../../../../tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="../../../../categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="../../../../tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">13</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="../../../../categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Catégories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="../../../../archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">CDM (Data &amp; Recover)</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="../../../../images/redefine-avatar.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">NPCMike</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv.99</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-04-19 09:44:10</span>
+        <span class="mobile">2025-04-19 09:44:10</span>
+        <span class="hover-info">Créé</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-04-30 12:21:38</span>
+            <span class="mobile">2025-04-30 12:21:38</span>
+            <span class="hover-info">Mis à jour</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../../../../tags/CDM/">CDM</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<details>
+    <summary>目錄</summary>
+
+<ul>
+<li>前言 </li>
+<li>What is CDM</li>
+<li>NeuShield</li>
+<li>實作</li>
+<li>簡報呈現</li>
+</ul>
+</details>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>這是學校的報告，但覺得很有趣所以也做成我的Blog，如有刊誤可以告知會進行更正。<br>在做報告時，其實根本沒有接觸過，所以是看著表選了最具體的一個–資料備份，這預計會是短系列文，每次會報告一個新的類型，希望可以成功。</p>
+<h1 id="What-is-CDM-Cyber-Defense-Matrix"><a href="#What-is-CDM-Cyber-Defense-Matrix" class="headerlink" title="What is CDM (Cyber Defense Matrix)"></a>What is CDM (Cyber Defense Matrix)</h1><p>簡短來說，CDM 是一張 5x5 的資安防禦檢查表，幫助你確認「哪些資產」在「哪些防禦階段」有做好保護。<br>而在這表格中 “NIST CSF” 指的是功能，保護對象則是資安資產。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="CDM.png"
+                      alt="CDM表格"
+                ></p>
+<h1 id="NeuShield"><a href="#NeuShield" class="headerlink" title="NeuShield"></a>NeuShield</h1><p>​NeuShield 是一家總部位於美國加州弗里蒙特（Fremont, CA）的網路安全公司，成立於 2017 年，專注於提供創新的資料保護解決方案，特別針對勒索軟體攻擊的防護與恢復。</p>
+<h2 id="公司概況"><a href="#公司概況" class="headerlink" title="公司概況"></a>公司概況</h2><ul>
+<li>創立時間：​2017 年</li>
+<li>總部位置：​200 Brown Road, Suite 306, Fremont, CA 94539</li>
+<li>公司性質：​私有公司，獲得創投資金支持</li>
+<li>員工人數：​約 7 人</li>
+<li>主要產品：​NeuShield Data Sentinel</li>
+</ul>
+<h2 id="產品特色"><a href="#產品特色" class="headerlink" title="產品特色"></a>產品特色</h2><p>NeuShield 的核心產品 Data Sentinel 採用專利技術，提供與傳統防毒軟體不同的資料保護方式：​</p>
+<ul>
+<li>Mirror Shielding™：​建立資料的鏡像層，使勒索軟體無法直接修改原始檔案，即使遭受攻擊，也能迅速還原。</li>
+<li>One-Click Restore：​一鍵還原功能，可快速將作業系統和檔案恢復至攻擊前的狀態，無需備份。</li>
+<li>Data Engrams™：​類似檔案版本控制，保留多個時間點的資料副本，便於回復至先前版本。</li>
+<li>Exfiltration Protection：​防止資料被未授權存取或外洩，特別針對 SQL 資料庫提供保護。</li>
+<li>Cloud Drive Protection：​保護本機的雲端資料夾，如 OneDrive、Dropbox 等，即使離線也能恢復資料。</li>
+</ul>
+<h2 id="市場表現與認可"><a href="#市場表現與認可" class="headerlink" title="市場表現與認可"></a>市場表現與認可</h2><ul>
+<li>資金籌措：​截至 2019 年，共籌得約 160 萬美元的種子輪資金。</li>
+<li>業界認可：​被 Fast Company 評選為 2021 年「全球最具創新力公司」之一。</li>
+<li>產品評價：​PCMag 給予 Data Sentinel 4.0 分（滿分 5 分）的評價，肯定其在勒索軟體攻擊後的資料恢復能力。</li>
+</ul>
+<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>( 這同時也是我在報告中負責的部分 )</p>
+<h2 id="Mirror-Shielding™"><a href="#Mirror-Shielding™" class="headerlink" title="Mirror Shielding™"></a>Mirror Shielding™</h2><p>這是他一開始的起始頁面<br>( 他有一個很嚴重的問題，他的頁面不能縮放，看著很難受，我是P圖的嘿嘿 )<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="start.png"
+                      alt="NeuShield_start"
+                ><br>按到 Mirror Shielding 可以看到他保護的威脅攻擊有哪些，緊接著，也可以看 “ NeuShield Explorer “，會看到他把我們的資料夾又複製到他自己下 ( 紅框 )，那就是所謂的保護層，所以我們在做更動時，其實是動在保護層上的<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="Mirror.png"
+                      alt="Mirror_Shielding"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="Show_Mirror.png"
+                      alt="show_Mirror"
+                ><br>再來開始測試是否有成功執行<br>我先新增一個資料夾(內含多筆內容為檔名的資料) -&gt; 按下 commit 同意變更 ( 變成備份 )<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="Shield_test.png"
+                      alt="test_Mirror_Shield"
+                ><br>再對檔案進行加密(快速寫了凱薩加密k&#x3D;3)、原始檔與加密檔比較圖<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="Caesar.png"
+                      alt="Caesar"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="M_and_C.png"
+                      alt="compare"
+                ><br>做這件事是為了模擬被malware進行檔案加密 ( 也可以是勒索病毒 )，可以透過collect log下載觀察檔( 會下載到桌面.zip )<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="check_func.png"
+                      alt="check_works"
+                ><br>觀察文件後會看到 “ DebugLog.txt “，裡面有幾行關鍵點可以得知我的行為</p>
+<div class="code-container" data-rel="Inform7"><figure class="iseeu highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs inform7">1. <span class="hljs-comment">[2025-04-20T15:26:20.468 0418]</span> <span class="hljs-comment">[serv]</span> Reverting folder C:\Users\vboxuser\Desktop\. Does not lock down this folder after reverting<br>2. <span class="hljs-comment">[2025-04-20T15:26:21.396 0170]</span> <span class="hljs-comment">[serv]</span> Restoring folder C:\Users\vboxuser\Desktop start on Sun, 20 Apr 2025 03:26:21 PM and finish on Sun, 20 Apr 2025 03:26:21 PM. Total 2 files restored. Skipped 0 files.<br>可通過這1、2點得知我對桌面進行Reverting的開始與結束的時間<br><br>3. <span class="hljs-comment">[2025-04-20T17:18:46.052 1288]</span> <span class="hljs-comment">[serv]</span> Successfully created system restore point# 3<br>可通過第三點得知他在這時建立保護快照<br><br>4. <span class="hljs-comment">[2025-04-20T17:25:16.919 184C]</span> <span class="hljs-comment">[serv]</span> VSS volume \Device\NeuShieldVolumeShadowCopy1 for C: <span class="hljs-keyword">is</span> ready  <br>5. <span class="hljs-comment">[2025-04-20T17:25:16.926 184C]</span> <span class="hljs-comment">[serv]</span> Dama now session finished  <br>6. <span class="hljs-comment">[2025-04-20T17:25:16.931 184C]</span> <span class="hljs-comment">[serv]</span> Detached VSS volume \Device\NeuShieldVolumeShadowCopy1<br>VSS ( Volume Shadow Copy ) 代表有建立隱藏快照<br>Dama session 【可能】為處理還原的內部流程名稱 ( 沒找到官方文件 )<br>這可以知道NeuShield 確實成功執行 Mirror Shielding Restoring<br></code></pre></td></tr></table></figure></div>
+
+<p>此為我的 DebugLog.txt<br><a href="DebugLog.txt">提供我的DebugLog檔</a></p>
+<p>此為學校報告的簡報原始檔 ( 我叫方景玄，負責實作，職位為騎士與工匠 )<br><a class="link"   target="_blank" rel="noopener" href="https://www.canva.com/design/DAGf0eCdeP4/EsKBrGt3fkNKE8n7-axa4w/view?utm_content=DAGf0eCdeP4&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hfc9555084a" >Canva<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<hr>
+<p>恭喜我自己這次我做的比之前更深入，算是對自己的逼迫?(至少成功了，我要哭了)各位下課!!</p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Titre:</strong> CDM (Data &amp; Recover)</li>
+        <li><strong>Auteur:</strong> NPCMike</li>
+        <li><strong>Créé à
+                :</strong> 2025-04-19 09:44:10</li>
+        
+            <li>
+                <strong>Mis à jour à
+                    :</strong> 2025-04-30 12:21:38
+            </li>
+        
+        <li>
+            <strong>Lien:</strong> https://npcmike.github.io/2025/04/19/CDM_Data_and_Recover/
+        </li>
+        <li>
+            <strong>
+                Licence:
+            </strong>
+            
+
+            
+                Cette œuvre est sous licence <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="../../../../tags/CDM/">#CDM</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="../../21/CDM-NDR/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">CDM_NDR</span>
+						<span class="post-nav-item">Articles précédents</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="../../../01/22/2025-1-22-TSCCTF/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">TSCCTF write up (賽後解)</span>
+						<span class="post-nav-item">Articles suivants</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Commentaires
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '../../../../js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">Sur cette page</div>
+		<div class="page-title">CDM (Data &amp; Recover)</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-CDM-Cyber-Defense-Matrix"><span class="nav-text">What is CDM (Cyber Defense Matrix)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NeuShield"><span class="nav-text">NeuShield</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E5%8F%B8%E6%A6%82%E6%B3%81"><span class="nav-text">公司概況</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A2%E5%93%81%E7%89%B9%E8%89%B2"><span class="nav-text">產品特色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%82%E5%A0%B4%E8%A1%A8%E7%8F%BE%E8%88%87%E8%AA%8D%E5%8F%AF"><span class="nav-text">市場表現與認可</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C"><span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mirror-Shielding%E2%84%A2"><span class="nav-text">Mirror Shielding™</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">NPCMike</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        9  posts au total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITEURS</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">NOMBRE TOTAL DE PAGES VUES</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog en ligne depuis <span class="odometer" id="runtime_days" ></span> Jours <span class="odometer" id="runtime_hours"></span> Hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="recherche..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="js/build/libs/Swup.min.js"></script>
+
+<script src="js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="js/build/utils.js" type="module"></script>
+
+<script src="js/build/main.js" type="module"></script>
+
+<script src="js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="js/build/tools/runtime.js"></script>
+
+    
+<script src="js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="js/build/libs/Typed.min.js"></script>
+
+  
+<script src="js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+	
+</body>
+
+</html>
