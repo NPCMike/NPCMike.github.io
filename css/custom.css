@@ -1,0 +1,60 @@
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: "Blesh fonte", "Blesh Fonte", "BlexMono Nerd Font", "BlexMono Nerd Font Mono", sans-serif !important;
+}
+
+.navbar-container {
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+}
+
+.navbar-content {
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.navbar-content .left {
+  margin-left: 0 !important;
+}
+
+.logo-title,
+.logo-title h1,
+.navbar-container .navbar-content .logo-title,
+.navbar-container .navbar-content .logo-title h1 {
+  font-family: "Blesh fonte", "Blesh Fonte", "BlexMono Nerd Font", "BlexMono Nerd Font Mono", sans-serif !important;
+  letter-spacing: 0 !important;
+  font-weight: 400 !important;
+}
+
+.navbar-list .navbar-item > a,
+.drawer-navbar-item span,
+.drawer-navbar-item-sub span {
+  text-transform: lowercase !important;
+}
+
+.archive-list-container .article-item {
+  min-height: 5.25rem !important;
+  padding-top: 2.75rem !important;
+  padding-left: 2rem !important;
+}
+
+.archive-list-container .article-item::before {
+  left: 2rem !important;
+  top: 0.85rem !important;
+  line-height: 1.2 !important;
+}
+
+.archive-list-container .article-item span.article-title {
+  line-height: 1.35 !important;
+  overflow-wrap: anywhere;
+}
+
+.archive-list-container .article-item span.article-title::after {
+  top: 0.6em !important;
+}

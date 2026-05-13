@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="NPC,NPCMike,NPCMike&#39;s blog,NPCMike&#39;s Hexo blog,NPCMike&#39;s Hexo theme,blog,hexo,cybersecurity,CTF,pwn,REV">
+    
+    
+    <meta name="author" content="NPCMike">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://npcmike.github.io/2025/07/04/c2-理論篇/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C2 理論篇">
+<meta property="og:url" content="https://npcmike.github.io/2025/07/04/C2-%E7%90%86%E8%AB%96%E7%AF%87/index.html">
+<meta property="og:site_name" content="NPC&#39;blog">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://npcmike.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-07-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-13T08:49:36.310Z">
+<meta property="article:author" content="NPCMike">
+<meta property="article:tag" content="C2">
+<meta property="article:tag" content="Research">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npcmike.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            C2 理論篇 | NPC&#39;blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="/css/custom.css">
+                
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+        <link href="" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"npcmike.github.io","root":"/","language":"en","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["Lv.999","Lv.99","Lv.9","Lv.1"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":true,"family":"Blesh fonte, BlexMono Nerd Font, sans-serif","url":null},"english":{"enable":true,"family":"Blesh fonte, BlexMono Nerd Font, sans-serif","url":null},"title":{"enable":true,"family":"Blesh fonte, BlexMono Nerd Font, sans-serif","url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Who am I ?","subtitle":{"text":["Who cares ................"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":[{"icon":"fa-brands fa-github","url":"https://github.com/NPCMike"},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"NPC940103@gmail.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"100%","pages":"100%"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"tag":{"path":"/tags","icon":"fa-regular fa-tags"},"ls":{"path":"/archives","icon":"fa-regular fa-archive"},"Whoami":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2024/12/31 10:00:00","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2024/12/31 10:00:00","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.i18n = {"search":"Search...","toc":"On this page","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"POWERED BY %s","theme":"THEME","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","post":"Post","posts":"Posts","tagcloud":"Tag Cloud","comment":"Comment","comments":"Comments","home":"Home","archive":"Archive","archives":"Archives","top":"TOP","sticky":"Sticky","go-back-home":"Go Back Home","masonry_loading":"Loading photos...","image_viewer":"Image viewer","close":"Close","exif":{"title":"EXIF","cards":{"camera":"Camera","lens":"Lens","exposure":"Exposure","other":"Other"},"fields":{"make":"Brand","model":"Model","date_taken":"Date taken","lens_model":"Lens","focal_length":"Focal length","focus_mode":"Focus mode","shutter":"Shutter","aperture":"Aperture","iso":"ISO","exposure_program":"Exposure program","exposure_compensation":"Exposure compensation","metering_mode":"Metering mode","flash":"Flash","white_balance":"White balance","latitude":"Latitude","longitude":"Longitude","altitude":"Altitude"},"status":{"loading":"Loading...","no_exif":"No EXIF available","library_missing":"EXIF library not loaded","image_source_missing":"Image source unavailable","unavailable":"EXIF unavailable (blocked by CORS or missing metadata)","flag_unavailable":"EXIF unavailable"}},"about":"About","changelog":"Changelog","links":"Links","link":"Link","friends":"Friends","friend":"Friend","timeline":"Timeline","shuoshuo":"Shuoshuo","bookmarks":"Bookmarks","site_uv":"VISITOR COUNT","site_pv":"TOTAL PAGE VIEWS","read_more":"Read more","wordcount":"Words","min2read":"Mins","status":"Status","runtime":"Blog up for","days":"days","hours":"hrs","minutes":"Min","seconds":"Sec","optimized_by":"and Optimized by Evan","rights":"All Rights Reserved","site_posts":"%s posts in total","site_wordcount":"%s words in total","copyright":{"author":"Author","title":"Title","link":"Link","create_time":"Created at","update_time":"Updated at","license_title":"License","license_content":"This work is licensed under %s.","all_rights_reserved":"All Rights Reserved &#169; %s","public_domain":"This work is in the public domain."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"},"create_time":"Created","update_time":"Updated","expired":"This post is written %s days ago, and the content may not be up to date."};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                NPC&#39;blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    TAG
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    LS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    WHOAMI
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags"
+                        >
+                            <span>
+                                TAG
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                LS
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about"
+                        >
+                            <span>
+                                WHOAMI
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/archives"
+                        >
+                            <span>Archives</span>
+                            <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">13</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">C2 理論篇</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/redefine-avatar.svg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">NPCMike</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv.99</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-07-04</span>
+        <span class="mobile">2025-07-04</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-05-13 16:49:36</span>
+            <span class="mobile">2026-05-13 16:49:36</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/C2/">C2</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Research/">Research</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.8k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>6 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p>這篇是 C2 理論筆記，從 MITRE ATT&amp;CK TA0011 出發，整理 Command and Control 的定義、Client-Server、P2P、Multi-Stage 架構，以及常見通訊行為的優缺點。</p>
+<span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>撰寫本篇的契機，源於對資安研究的興趣，尤其未來實習工作中有可能接觸 C2 技術與紅隊攻擊鏈，因此特此整理與紀錄所學，作為學習筆記與知識累積的一部分。</p>
+<p>本篇將依據 MITRE ATT&amp;CK TA0011 Command and Control 進行技術定義與實務研究，內容涵蓋常見技術、架構類型與攻防觀點。</p>
+<p>所有實作或流程圖將會於實戰篇內撰寫，本文只簡介原理與優缺點。</p>
+<h2 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h2><p>根據 MITRE ATT&amp;CK TA0011 定義，Command and Control，又稱 C2 或 C&amp;C，是攻擊者與已被控制的系統或裝置進行溝通的一系列技術。</p>
+<p>攻擊者會透過 C2 Server 下達指令、回傳資料，或下載惡意軟體以執行惡意行為。為了因應各種不同的網路架構與防禦強度，攻擊者可選擇不同的 C2 技術，以達到隱蔽性、快速控制或高韌性等目的。</p>
+<h2 id="C2-通訊模型"><a href="#C2-通訊模型" class="headerlink" title="C2 通訊模型"></a>C2 通訊模型</h2><p>C2 通訊模型可分為三大類：</p>
+<ul>
+<li>Client - Server</li>
+<li>Peer to Peer</li>
+<li>Multi-Stage</li>
+</ul>
+<h3 id="Client-Server"><a href="#Client-Server" class="headerlink" title="Client - Server"></a>Client - Server</h3><p>攻擊者控制一台中央伺服器，也就是 C2 Server。受害端 Client 會連線至該伺服器取得指令並回傳結果。</p>
+<p>特點：</p>
+<ul>
+<li>架構簡單，容易實作。</li>
+<li>管理集中，操作方便。</li>
+<li>中央 C2 Server 容易成為明顯攻擊點。</li>
+</ul>
+<h3 id="Peer-to-Peer"><a href="#Peer-to-Peer" class="headerlink" title="Peer to Peer"></a>Peer to Peer</h3><p>每個感染主機既是 Client，也是中繼 Server。</p>
+<p>特點：</p>
+<ul>
+<li>無需中央 C2 Server。</li>
+<li>節點彼此分享 C2 指令，通常會搭配加密和簽章驗證。</li>
+<li>通常會有 egress 節點作為輸出結果回傳的出口。</li>
+<li>拓樸類似區塊鏈或 BitTorrent。</li>
+</ul>
+<h3 id="Multi-Stage"><a href="#Multi-Stage" class="headerlink" title="Multi-Stage"></a>Multi-Stage</h3><p>Multi-Stage 會分為多個階段執行。</p>
+<table>
+<thead>
+<tr>
+<th>階段</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Stage 1</td>
+<td>使用簡單協定與偽裝，例如 HTTPS beacon</td>
+</tr>
+<tr>
+<td>Stage 2</td>
+<td>載入更強的 C2 模組，例如 SOCKS proxy、P2P、Domain Fronting</td>
+</tr>
+</tbody></table>
+<p>特點：</p>
+<ul>
+<li>可整合 fallback 通道。</li>
+<li>可支援模組熱切換。</li>
+<li>隱蔽性與彈性較高。</li>
+</ul>
+<h2 id="C2-通訊行為"><a href="#C2-通訊行為" class="headerlink" title="C2 通訊行為"></a>C2 通訊行為</h2><p>以下介紹常見或重要的 C2 通訊行為。</p>
+<h2 id="Client-Server-類型"><a href="#Client-Server-類型" class="headerlink" title="Client - Server 類型"></a>Client - Server 類型</h2><h3 id="Beacon"><a href="#Beacon" class="headerlink" title="Beacon"></a>Beacon</h3><p>Beacon 是最常見的 C2 模式。</p>
+<p>原理：</p>
+<ul>
+<li>被感染的裝置 Victim &#x2F; Client 定時向 C2 Server 發送 check-in 封包。</li>
+<li>通常使用 HTTP POST 或 DNS Query。</li>
+<li>Client 詢問是否有任務。</li>
+<li>有任務則執行，並於下次連線時回傳結果。</li>
+<li>無任務則繼續等待下次詢問。</li>
+</ul>
+<p>封包內通常包含：</p>
+<ul>
+<li>timestamp</li>
+<li>host info</li>
+<li>execute result</li>
+</ul>
+<p>特點：</p>
+<ul>
+<li>容易實作。</li>
+<li>行為可用模型預測。</li>
+<li>可加上 Jitter 隨機時間進行規避。</li>
+<li>但研究指出，就算加入 Jitter，仍可能被預測出來。</li>
+</ul>
+<p>常用工具：</p>
+<ul>
+<li>Cobalt Strike Beacon</li>
+</ul>
+<h3 id="Reverse-Shell"><a href="#Reverse-Shell" class="headerlink" title="Reverse Shell"></a>Reverse Shell</h3><p>Reverse Shell 用於初期快速控制，具有即時性，但也容易被發現。</p>
+<p>原理：</p>
+<ul>
+<li>C2 Server 開啟 Listener。</li>
+<li>Client 對 C2 Server 的 IP 與 port 進行 outbound TCP 連線。</li>
+<li>建立互動式 Shell 通道，類似 SSH。</li>
+<li>封包傳輸為雙向、持續性，與 Beacon 不同。</li>
+</ul>
+<p>常用工具：</p>
+<ul>
+<li>Metasploit Reverse TCP&#x2F;HTTPS</li>
+<li>Cobalt Strike Reverse Shell Listener</li>
+<li>Sliver Reverse Session</li>
+</ul>
+<h3 id="WebSocket-HTTP2"><a href="#WebSocket-HTTP2" class="headerlink" title="WebSocket &#x2F; HTTP2"></a>WebSocket &#x2F; HTTP2</h3><p>WebSocket &#x2F; HTTP2 可視為改良版 Reverse Shell，使用現代協議建立持久化雙向連線。</p>
+<p>特點：</p>
+<ul>
+<li>HTTP Upgrade 建立 WebSocket 連線後可持續雙向通訊。</li>
+<li>HTTP&#x2F;2 使用 multiplexing 與 HPACK，更難被傳統 WAF 檢測。</li>
+<li>通常使用 443 port，與正常 HTTPS 混用，加大檢測難度。</li>
+</ul>
+<p>常用工具：</p>
+<ul>
+<li>Mythic WebSocket C2</li>
+<li>Sliver HTTP&#x2F;2 Mode</li>
+<li>Merlin C2</li>
+</ul>
+<h2 id="Peer-to-Peer-類型"><a href="#Peer-to-Peer-類型" class="headerlink" title="Peer to Peer 類型"></a>Peer to Peer 類型</h2><h3 id="Full-Mesh"><a href="#Full-Mesh" class="headerlink" title="Full Mesh"></a>Full Mesh</h3><p>每個 node 都與其他 node 相連。</p>
+<p>特點：</p>
+<ul>
+<li>去中心化。</li>
+<li>高容錯性與路由彈性。</li>
+<li>適合小規模 C2。</li>
+<li>節點增加時連線數會依 <code>n(n-1)/2</code> 成長。</li>
+</ul>
+<h3 id="Supernode-Leaf"><a href="#Supernode-Leaf" class="headerlink" title="Supernode + Leaf"></a>Supernode + Leaf</h3><p>節點分為兩類：</p>
+<ul>
+<li>Supernode：具備較強資源，例如 CPU、頻寬，負責管理多個下層葉節點。</li>
+<li>Leaf Node：只連到 Supernode，不彼此通信。</li>
+</ul>
+<p>特點：</p>
+<ul>
+<li>資源索引、搜尋、轉發皆由 Supernode 控制。</li>
+<li>管理性比 Full Mesh 好。</li>
+</ul>
+<h3 id="Hybrid-P2P-Centralized"><a href="#Hybrid-P2P-Centralized" class="headerlink" title="Hybrid P2P + Centralized"></a>Hybrid P2P + Centralized</h3><p>在 P2P 架構中加入中心節點。</p>
+<p>中心節點負責：</p>
+<ul>
+<li>登入</li>
+<li>節點分發</li>
+<li>任務通知</li>
+</ul>
+<p>實際資料交換仍走 P2P。</p>
+<p>特點：</p>
+<ul>
+<li>結合中央管理的可靠性與 P2P 的高效率。</li>
+<li>中心節點可作為 C2 Coordinator &#x2F; Tracker。</li>
+<li>搜尋與維運性強。</li>
+<li>中心節點仍是明顯攻擊點。</li>
+</ul>
+<h3 id="Layered-Peer-Tree"><a href="#Layered-Peer-Tree" class="headerlink" title="Layered Peer Tree"></a>Layered Peer Tree</h3><p>Layered Peer Tree 是多層式分級架構，類似企業組織樹狀圖。</p>
+<p>特點：</p>
+<ul>
+<li>上層節點可控制下層多個節點。</li>
+<li>下層節點可再控制下一層節點。</li>
+<li>支援更大規模且階層式的任務傳遞與資料擴散。</li>
+<li>適合大型 Botnet &#x2F; C2。</li>
+<li>可降低節點曝光風險。</li>
+<li>若中層節點失效，可能中斷整層資料傳遞。</li>
+</ul>
+<h2 id="Multi-Stage-類型"><a href="#Multi-Stage-類型" class="headerlink" title="Multi-Stage 類型"></a>Multi-Stage 類型</h2><p>Multi-Stage 是較特殊的多段式部署。</p>
+<h3 id="Stage-0-Initial-Dropper"><a href="#Stage-0-Initial-Dropper" class="headerlink" title="Stage 0 - Initial Dropper"></a>Stage 0 - Initial Dropper</h3><p>初始投遞階段。</p>
+<p>方法：</p>
+<ul>
+<li>使用簡便的下載器，例如 bash script。</li>
+<li>建立 foothold。</li>
+</ul>
+<h3 id="Stage-1-Downloader-Loader"><a href="#Stage-1-Downloader-Loader" class="headerlink" title="Stage 1 - Downloader &#x2F; Loader"></a>Stage 1 - Downloader &#x2F; Loader</h3><p>下載器階段。</p>
+<p>方法：</p>
+<ul>
+<li>使用 HTTP&#x2F;S 搭配強混淆。</li>
+<li>從遠端伺服器下載並載入更複雜的 payload。</li>
+<li>用於規避靜態檢測。</li>
+</ul>
+<h3 id="Stage-2-Main-Payload-RAT"><a href="#Stage-2-Main-Payload-RAT" class="headerlink" title="Stage 2 - Main Payload &#x2F; RAT"></a>Stage 2 - Main Payload &#x2F; RAT</h3><p>主要負載階段。</p>
+<p>方法：</p>
+<ul>
+<li>使用 WebSocket、HTTP&#x2F;S 或自定義加密協議。</li>
+<li>部署 C2 proxy 或 Remote Access Trojan。</li>
+</ul>
+<h3 id="Stage-3-Optional-Plugins-Lateral-Movement"><a href="#Stage-3-Optional-Plugins-Lateral-Movement" class="headerlink" title="Stage 3 - Optional Plugins &#x2F; Lateral Movement"></a>Stage 3 - Optional Plugins &#x2F; Lateral Movement</h3><p>自定義階段。</p>
+<p>方法：</p>
+<ul>
+<li>根據目標動態載入需要的模組。</li>
+<li>可能包含橫向移動工具、憑證收集器、資料外洩模組等。</li>
+</ul>
+<h2 id="優缺點比較"><a href="#優缺點比較" class="headerlink" title="優缺點比較"></a>優缺點比較</h2><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>Beacon</th>
+<th>Reverse Shell</th>
+<th>WebSocket&#x2F;HTTP2</th>
+<th>P2P</th>
+<th>Multi-Stage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通訊方式</td>
+<td>單向、階段性</td>
+<td>雙向、即時</td>
+<td>雙向、即時</td>
+<td>多向、分散式</td>
+<td>混合、分階段</td>
+</tr>
+<tr>
+<td>封包協議</td>
+<td>HTTP&#x2F;DNS</td>
+<td>TCP&#x2F;HTTPS</td>
+<td>WebSocket&#x2F;HTTP2</td>
+<td>自定義&#x2F;混合</td>
+<td>多協議組合</td>
+</tr>
+<tr>
+<td>偽裝性</td>
+<td>高</td>
+<td>低</td>
+<td>很高</td>
+<td>中等</td>
+<td>極高</td>
+</tr>
+<tr>
+<td>傳輸模式</td>
+<td>輪詢</td>
+<td>持續連線</td>
+<td>持續連線</td>
+<td>分散式路由</td>
+<td>分階段傳輸</td>
+</tr>
+<tr>
+<td>檢測難度</td>
+<td>中等</td>
+<td>低</td>
+<td>高</td>
+<td>高</td>
+<td>極高</td>
+</tr>
+<tr>
+<td>技術複雜度</td>
+<td>低</td>
+<td>低</td>
+<td>中等</td>
+<td>高</td>
+<td>極高</td>
+</tr>
+<tr>
+<td>韌性</td>
+<td>低</td>
+<td>低</td>
+<td>中等</td>
+<td>高</td>
+<td>極高</td>
+</tr>
+<tr>
+<td>延遲性</td>
+<td>高</td>
+<td>低</td>
+<td>低</td>
+<td>中等</td>
+<td>視階段而定</td>
+</tr>
+</tbody></table>
+<h2 id="小結論"><a href="#小結論" class="headerlink" title="小結論"></a>小結論</h2><p>C2 技術作為現代網路攻擊的核心組成部分，其技術複雜性和檢測難度持續增加。本篇透過系統性分析 C2 的技術定義、架構模型、通訊行為，快速說明 C2 技術的框架。</p>
+<p>從技術架構角度來看，C2 系統正在從傳統 Client-Server 星型架構，向更加複雜的 P2P 網狀架構和 Multi-Stage 分層架構演進。這種演進不僅提高了攻擊的隱蔽性和韌性，也為防禦者帶來挑戰。</p>
+<p>原本會在此加入真實案例分析，但因篇幅修訂問題，改成於實戰篇分析實際案例。</p>
+<p>最後強調，C2 技術的研究和應用必須在合法合規的框架內進行。無論是紅隊演練還是藍隊防禦，都應以提升整體網路安全水準為目標。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li>Fortinet</li>
+<li>C2 複刻</li>
+<li>Medium APT28</li>
+<li>FireEye APT28</li>
+<li>Cobalt Strike</li>
+</ul>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> C2 理論篇</li>
+        <li><strong>Author:</strong> NPCMike</li>
+        <li><strong>Created at
+                :</strong> 2025-07-04 00:00:00</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2026-05-13 16:49:36
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://npcmike.github.io/2025/07/04/C2-理論篇/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/C2/">#C2</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Research/">#Research</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/06/10/Leukocyte-Lab/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">Leukocyte-Lab</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.js';
+
+      (function() {
+        const startPath = location.pathname;
+        const startTime = Date.now();
+        const retryDelay = 200;
+        const retryLimit = 5000;
+
+        const runWaline = () => {
+          if (location.pathname !== startPath) {
+            return;
+          }
+
+          const container = document.getElementById('waline');
+          if (!container) {
+            if (Date.now() - startTime < retryLimit) {
+              setTimeout(runWaline, retryDelay);
+            }
+            return;
+          }
+
+          if (window.redefineWalineInstance?.destroy) {
+            window.redefineWalineInstance.destroy();
+          }
+
+          container.innerHTML = '';
+          window.redefineWalineInstance = init({
+            el: '#waline',
+            serverURL: 'https://example.example.com',
+            path: location.pathname,
+            dark: 'body[class~="dark-mode"]',
+            reaction: false,
+            requiredMeta: ['nick', 'mail'],
+            emoji: [],
+                      lang: 'zh-CN',
+          });
+        };
+
+        runWaline();
+      })();
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">C2 理論篇</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9"><span class="nav-text">定義</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C2-%E9%80%9A%E8%A8%8A%E6%A8%A1%E5%9E%8B"><span class="nav-text">C2 通訊模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Client-Server"><span class="nav-text">Client - Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Peer-to-Peer"><span class="nav-text">Peer to Peer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-Stage"><span class="nav-text">Multi-Stage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C2-%E9%80%9A%E8%A8%8A%E8%A1%8C%E7%82%BA"><span class="nav-text">C2 通訊行為</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Client-Server-%E9%A1%9E%E5%9E%8B"><span class="nav-text">Client - Server 類型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Beacon"><span class="nav-text">Beacon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse-Shell"><span class="nav-text">Reverse Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebSocket-HTTP2"><span class="nav-text">WebSocket &#x2F; HTTP2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Peer-to-Peer-%E9%A1%9E%E5%9E%8B"><span class="nav-text">Peer to Peer 類型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Full-Mesh"><span class="nav-text">Full Mesh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Supernode-Leaf"><span class="nav-text">Supernode + Leaf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hybrid-P2P-Centralized"><span class="nav-text">Hybrid P2P + Centralized</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layered-Peer-Tree"><span class="nav-text">Layered Peer Tree</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multi-Stage-%E9%A1%9E%E5%9E%8B"><span class="nav-text">Multi-Stage 類型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stage-0-Initial-Dropper"><span class="nav-text">Stage 0 - Initial Dropper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stage-1-Downloader-Loader"><span class="nav-text">Stage 1 - Downloader &#x2F; Loader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stage-2-Main-Payload-RAT"><span class="nav-text">Stage 2 - Main Payload &#x2F; RAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stage-3-Optional-Plugins-Lateral-Movement"><span class="nav-text">Stage 3 - Optional Plugins &#x2F; Lateral Movement</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%84%AA%E7%BC%BA%E9%BB%9E%E6%AF%94%E8%BC%83"><span class="nav-text">優缺點比較</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90%E8%AB%96"><span class="nav-text">小結論</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-text">參考資料</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">NPCMike</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        8 posts in total
+                    </span>
+                    
+                        <span>
+                            9.4k words in total
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+            
+                
+        
+                
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="Image viewer">
+	<button class="image-viewer-close" type="button" aria-label="Close">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="Prev">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="Close">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="Next">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Search..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>

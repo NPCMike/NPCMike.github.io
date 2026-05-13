@@ -1,0 +1,338 @@
+﻿
+[2024-10-31T18:42:07.922 09E0] [serv] ****************************************************************
+[2024-10-31T18:42:07.922 09E0] [serv] *                  NeuShield Data Sentinel                     *
+[2024-10-31T18:42:07.922 09E0] [serv] ****************************************************************
+[2024-10-31T18:42:07.980 09E0] [serv]  
+[2024-10-31T18:42:07.980 09E0] [serv] Product Information
+[2024-10-31T18:42:07.980 09E0] [serv]     - Name:         NeuShield Data Sentinel
+[2024-10-31T18:42:07.980 09E0] [serv]     - Version:      3.0.2290
+[2024-10-31T18:42:07.980 09E0] [serv]     - Edition:      Free
+[2024-10-31T18:42:07.980 09E0] [serv] Machine Information
+[2024-10-31T18:42:07.980 09E0] [serv]     - Manufacturer: innotek GmbH
+[2024-10-31T18:42:07.980 09E0] [serv]     - Model:        VirtualBox
+[2024-10-31T18:42:07.980 09E0] [serv]     - BIOS version: VirtualBox 12/01/2006
+[2024-10-31T18:42:07.980 09E0] [serv] OS Information
+[2024-10-31T18:42:07.980 09E0] [serv]     - Name:         Windows 10 Home 64 Bits (Build 18363)
+[2024-10-31T18:42:07.980 09E0] [serv]     - Language:     en-US
+[2024-10-31T18:42:07.980 09E0] [serv] Host Information:
+[2024-10-31T18:42:07.980 09E0] [serv]     - FQDN Name:    win11
+[2024-10-31T18:42:07.980 09E0] [serv] Hardware Information
+[2024-10-31T18:42:07.980 09E0] [serv]     - CPU:          11th Gen Intel(R) Core(TM) i7-1195G7 @ 2.90GHz
+[2024-10-31T18:42:07.980 09E0] [serv]     - Memory:       10.0 GB
+[2024-10-31T18:42:07.980 09E0] [serv]     - Disks
+[2024-10-31T18:42:08.998 09E0] [serv]       A: Removable Drive
+[2024-10-31T18:42:08.998 09E0] [serv]          > Total space: 1 MB
+[2024-10-31T18:42:08.998 09E0] [serv]          > Free space: 1 MB (99.1%)
+[2024-10-31T18:42:08.998 09E0] [serv]       C: Fixed Drive
+[2024-10-31T18:42:08.998 09E0] [serv]          > Total space: 51197 MB
+[2024-10-31T18:42:08.998 09E0] [serv]          > Free space: 26693 MB (52.1%)
+[2024-10-31T18:42:08.998 09E0] [serv]       D: CD/DVD
+[2024-10-31T18:42:08.998 09E0] [serv]          > Total space: 5087 MB
+[2024-10-31T18:42:08.998 09E0] [serv]          > Free space: 0 MB (0.0%)
+[2024-10-31T18:42:08.998 09E0] [serv]     - Network Adapters
+[2024-10-31T18:42:08.998 09E0] [serv]       #0: {C892BB9B-0458-4B46-ACFD-0112374EAF8F}
+[2024-10-31T18:42:08.998 09E0] [serv]          > Friendly name: 乙太網路
+[2024-10-31T18:42:08.998 09E0] [serv]          > Description: Intel(R) PRO/1000 MT Desktop Adapter
+[2024-10-31T18:42:08.998 09E0] [serv]          > IfType: Ethernet network interface
+[2024-10-31T18:42:08.998 09E0] [serv]          > OperStatus: Up
+[2024-10-31T18:42:08.998 09E0] [serv]          > MAC: 08-00-27-A8-0B-34
+[2024-10-31T18:42:08.998 09E0] [serv]          > IPv4: 10.0.2.15
+[2024-10-31T18:42:08.998 09E0] [serv]          > IPv6: 
+[2024-10-31T18:42:08.998 09E0] [serv]       #1: {17E6004B-BC09-46D0-89B4-61788330DC63}
+[2024-10-31T18:42:08.998 09E0] [serv]          > Friendly name: VirtualBox Host-Only Network
+[2024-10-31T18:42:08.998 09E0] [serv]          > Description: VirtualBox Host-Only Ethernet Adapter
+[2024-10-31T18:42:08.998 09E0] [serv]          > IfType: Ethernet network interface
+[2024-10-31T18:42:08.998 09E0] [serv]          > OperStatus: Up
+[2024-10-31T18:42:08.998 09E0] [serv]          > MAC: 0A-00-27-00-00-0A
+[2024-10-31T18:42:08.998 09E0] [serv]          > IPv4: 192.168.56.1
+[2024-10-31T18:42:08.998 09E0] [serv]          > IPv6: 
+[2024-10-31T18:42:08.998 09E0] [serv]  
+[2024-10-31T18:42:08.998 09E0] [serv] Set FEATURE_BROWSER_EMULATION code (IE11) for neuui.exe
+[2024-10-31T18:42:08.998 09E0] [serv] Initializing drivers...
+[2024-10-31T18:42:09.390 09E0] [fltm] Successfully connect to mini filter. Count is 0
+[2024-10-31T18:42:09.408 09E0] [serv] Driver version is 3.0.2290
+[2024-10-31T18:42:09.408 09E0] [serv] Finished initializing drivers
+[2024-10-31T18:42:09.408 09E0] [serv] Initializing cloud service...
+[2024-10-31T18:42:09.420 09E0] [wssc] wss proxy: [4][No proxy]
+[2024-10-31T18:42:09.420 09E0] [wssc] wss client is initialized!
+[2024-10-31T18:42:09.420 09E0] [serv] Finished initializing cloud service
+[2024-10-31T18:42:09.420 09E0] [serv] Initializing notify service...
+[2024-10-31T18:42:09.420 09E0] [serv] Finished initializing notify service
+[2024-10-31T18:42:09.420 09E0] [serv] Initializing add-ons service...
+[2024-10-31T18:42:09.420 09E0] [serv] Finished initializing add-ons service
+[2024-10-31T18:42:09.420 09E0] [serv] Initializing real time scan service...
+[2024-10-31T18:42:09.420 09E0] [serv] Finished initializing real time scan service
+[2024-10-31T18:42:09.435 09E0] [serv] Successfully set policy to drivers
+[2024-10-31T18:42:09.436 09E0] [serv] Saving initial drv state
+[2024-10-31T18:42:09.454 09E0] [serv] Starting clone service...
+[2024-10-31T18:42:09.454 09E0] [serv] Creating restore point task is going to start at 2024-11-01T18:42:09+08:00
+[2024-10-31T18:42:09.454 09E0] [serv] Clone service is going to start at 2024-11-01T18:42:09+08:00
+[2024-10-31T18:42:09.454 09E0] [serv] Finished initializing clone service
+[2024-10-31T18:42:09.454 09E0] [serv] Starting remote revert service...
+[2024-10-31T18:42:09.454 09E0] [serv] Finished initializing remote revert service
+[2024-10-31T18:42:10.219 1910] [wssc] Can't send request, error is 12175
+[2024-10-31T18:42:10.219 1910] [wssc] Disconnected from the Cloud
+[2024-10-31T18:42:10.264 0368] [serv] Failed to check in to Cloud service@A. Error is Win32: ????????
+                                (ns::net::http::details::winhttp_client::send, http.cpp, 753)
+[2024-10-31T18:42:10.998 0368] [serv] Proxy config does not work! Ignoring it...
+[2024-10-31T18:42:10.998 09E0] [serv] Starting certificate based enrollment worker
+[2024-10-31T18:42:14.057 0368] [serv] Successfully install Shell extension neuoverlay.dll
+[2024-10-31T18:42:14.135 0368] [serv] Successfully install Shell extension neushellext.dll
+[2024-10-31T18:42:14.168 0368] [serv] Successfully install wow64 Shell extension neushellext.dll
+[2024-10-31T18:42:14.168 0368] [serv] Successfully hardening registries
+[2024-10-31T18:42:14.185 0368] [serv] Successfully hardening drivers
+[2024-10-31T18:42:14.229 10F0] [serv] Discover after install worker thread finished in 47 ms and found 10 files
+[2024-10-31T18:42:14.237 10F0] [serv] Successfully update client stats
+[2024-10-31T18:42:14.245 0368] [serv] UI process received notification and return Status OK
+[2024-10-31T18:42:27.669 148C] [serv] *** BitLocker is OFF ***
+[2024-10-31T18:43:21.013 1910] [wssc] Can't send request, error is 12175
+[2024-10-31T18:43:21.013 1910] [wssc] Disconnected from the Cloud
+[2024-10-31T18:44:11.033 0CBC] [serv] Starting delayed chores...
+[2024-10-31T18:44:16.681 0CBC] [serv] Scheduling task to create NeuShield restore point after realizing there is no NeuShield restore point exists
+[2024-10-31T18:44:16.681 0CBC] [serv] Finished delayed chores
+[2024-10-31T18:44:16.682 1208] [serv] Starting task to create system restore point...
+[2024-10-31T18:44:29.264 1910] [wssc] Can't send request, error is 12175
+[2024-10-31T18:44:29.264 1910] [wssc] Disconnected from the Cloud
+[2024-10-31T18:44:32.590 1208] [serv] Successfully created system restore point# 1
+[2024-10-31T18:44:32.965 1208] [serv] Disk space reserved for C: is UNBOUNDED
+[2024-10-31T18:44:32.965 1208] [serv] Disk space allocated (used) for C: is 1664 (1) MB
+[2025-04-19T23:01:00.193 0368] [serv] Scheduling scheduled check in. Check in period changed from 16 to 16 minutes
+[2025-04-19T23:01:00.193 0848] [wssc] Can't send data to the Cloud because we are not connected!
+[2025-04-19T23:01:00.208 0368] [serv] Scheduling uploading 1 activity log(s) to cloud service via WSS
+[2025-04-19T23:01:00.208 0368] [serv] Scheduling scheduled check upgrade. Check upgrade period changed from 42 to 43 minutes
+[2025-04-19T23:01:00.208 0848] [wssc] Can't send data to the Cloud because we are not connected!
+[2025-04-19T23:01:00.223 0368] [serv] C: -> 214 MB, 88 MB, 80 MB
+[2025-04-19T23:01:00.223 0368] [serv] Made some noise
+[2025-04-19T23:01:00.251 0368] [serv] Successfully update last be annoying time to 2024-10-31T18:47:10.753+08:00
+[2025-04-19T23:01:00.255 0368] [serv] w: 1; o: 113; b: 0; v: 0; c: 15
+[2025-04-19T23:01:01.223 0368] [serv] Successfully update last check update time to 2025-04-19T23:01:01.525+08:00
+[2025-04-19T23:01:01.223 0368] [serv] UI process received notification and return Status OK
+[2025-04-19T23:02:07.749 1910] [wssc] Connected to the Cloud
+[2025-04-19T23:02:08.749 0C90] [wssc] Received a message from the Cloud
+[2025-04-19T23:02:10.090 0848] [serv] Scheduling on demand check in
+[2025-04-19T23:02:10.092 0848] [serv] Scheduling uploading 1 activity log(s) to cloud service via WSS
+[2025-04-19T23:02:10.092 0848] [serv] There is no saved security log
+[2025-04-19T23:02:10.483 0C90] [wssc] Received a message from the Cloud
+[2025-04-19T23:02:10.483 0848] [serv] Successfully check in Cloud service. Status code is 200 and Msg is OK
+[2025-04-19T23:02:10.483 0C90] [wssc] Received a message from the Cloud
+[2025-04-19T23:02:10.529 0848] [serv] Successfully update last check in time to 2025-04-19T23:02:10.651+08:00
+[2025-04-19T23:02:10.529 0848] [serv] Cloud response: Client is not registered with any user account.
+[2025-04-19T23:02:10.529 0848] [serv] Deleting activity logs after uploading to cloud service
+[2025-04-19T23:02:58.950 22B0] [serv] Starting task to create system restore point...
+[2025-04-19T23:03:28.055 22B0] [serv] Successfully created system restore point# 2
+[2025-04-19T23:03:28.584 22B0] [serv] Disk space reserved for C: is UNBOUNDED
+[2025-04-19T23:03:28.584 22B0] [serv] Disk space allocated (used) for C: is 1778 (148) MB
+[2025-04-19T23:05:58.909 136C] [serv] Accelerator worker finished after processing 0 item(s)
+[2025-04-19T23:05:59.042 0368] [serv] Purging expired recycle files
+[2025-04-19T23:05:59.042 0368] [serv] Found 0 deleted files in NeuShield recycle bin
+[2025-04-19T23:05:59.053 0368] [serv] Successfully update client stats
+[2025-04-19T23:05:59.053 0368] [serv] Purged 0 out of 0 expired recycle files
+[2025-04-19T23:05:59.053 0368] [serv] Found 0 deleted engrams in NeuShield recycle bin
+[2025-04-19T23:05:59.053 0368] [serv] Purged 0 out of 0 expired data engrams
+[2025-04-19T23:05:59.065 0368] [serv] Made some noise
+[2025-04-19T23:05:59.068 0368] [serv] Successfully update last be annoying time to 2025-04-19T23:05:59.355+08:00
+[2025-04-19T23:05:59.077 0368] [serv] w: 0; o: 138; b: 0; v: 0; c: 15
+[2025-04-19T23:05:59.082 0368] [serv] UI process received notification and return Status OK
+[2025-04-19T23:06:10.085 0368] [serv] UI process received notification and return Status OK
+[2025-04-19T23:06:37.951 0368] [serv] UI process received notification and return Status OK
+[2025-04-19T23:10:59.050 0368] [serv] w: 0; o: 13; b: 0; v: 0; c: 15
+[2025-04-19T23:15:59.060 0368] [serv] w: 0; o: 44; b: 0; v: 0; c: 15
+[2025-04-19T23:21:00.112 0368] [serv] Scheduling scheduled check in. Check in period changed from 16 to 25 minutes
+[2025-04-19T23:21:00.122 0368] [serv] Scheduling uploading 1 activity log(s) to cloud service via WSS
+[2025-04-19T23:21:00.122 0368] [serv] w: 0; o: 2; b: 0; v: 0; c: 15
+[2025-04-19T23:21:00.325 0C90] [wssc] Received a message from the Cloud
+[2025-04-19T23:21:00.325 0848] [serv] Successfully check in Cloud service. Status code is 200 and Msg is OK
+[2025-04-19T23:21:00.325 0C90] [wssc] Received a message from the Cloud
+[2025-04-19T23:21:00.356 0848] [serv] Successfully update last check in time to 2025-04-19T23:21:00.683+08:00
+[2025-04-19T23:21:00.356 0848] [serv] Cloud response: Client is not registered with any user account.
+[2025-04-19T23:21:00.356 0848] [serv] Deleting activity logs after uploading to cloud service
+[2025-04-19T23:25:59.072 0368] [serv] w: 0; o: 5; b: 0; v: 0; c: 15
+[2025-04-19T23:30:59.059 0368] [serv] w: 1; o: 92; b: 0; v: 0; c: 15
+[2025-04-19T23:35:59.038 0368] [serv] w: 0; o: 8; b: 0; v: 0; c: 15
+[2025-04-19T23:33:43.806 0368] [serv] w: 0; o: 2; b: 0; v: 0; c: 15
+[2025-04-19T23:38:43.779 0368] [serv] Scheduling scheduled check upgrade. Check upgrade period changed from 43 to 42 minutes
+[2025-04-19T23:38:43.818 0368] [serv] C: -> 214 MB, 88 MB, 80 MB
+[2025-04-19T23:38:43.826 0368] [serv] w: 0; o: 2; b: 0; v: 0; c: 15
+[2025-04-19T23:38:46.512 0368] [serv] Successfully update last check update time to 2025-04-19T23:46:02.097+08:00
+[2025-04-19T23:43:44.969 0368] [serv] Scheduling scheduled check in. Check in period changed from 25 to 27 minutes
+[2025-04-19T23:43:45.044 0368] [serv] There is no saved activity log
+[2025-04-19T23:43:45.044 0368] [serv] w: 0; o: 2; b: 0; v: 0; c: 15
+[2025-04-19T23:43:45.407 0C90] [wssc] Received a message from the Cloud
+[2025-04-19T23:43:45.407 0848] [serv] Successfully check in Cloud service. Status code is 200 and Msg is OK
+[2025-04-19T23:43:45.592 0848] [serv] Successfully update last check in time to 2025-04-19T23:51:01.119+08:00
+[2025-04-19T23:43:45.592 0848] [serv] Cloud response: Client is not registered with any user account.
+[2025-04-19T23:48:43.763 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-19T23:53:43.781 0368] [serv] w: 0; o: 2; b: 0; v: 0; c: 15
+[2025-04-20T15:04:16.548 0C90] [wssc] Connection to the Cloud is broken, error is 12030
+[2025-04-20T15:04:16.548 1910] [wssc] Received request to disconnect and reconnect...
+[2025-04-20T15:04:16.548 1910] [wssc] Disconnected from the Cloud
+[2025-04-20T15:04:18.487 1910] [wssc] Connected to the Cloud
+[2025-04-20T15:04:19.502 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T15:04:20.556 0848] [serv] Scheduling on demand check in
+[2025-04-20T15:04:20.556 0848] [serv] There is no saved activity log
+[2025-04-20T15:04:20.556 0848] [serv] There is no saved security log
+[2025-04-20T15:04:20.579 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T15:04:20.579 0848] [serv] Successfully check in Cloud service. Status code is 200 and Msg is OK
+[2025-04-20T15:04:20.579 0848] [serv] Successfully update last check in time to 2025-04-20T15:04:20.683+08:00
+[2025-04-20T15:04:20.579 0848] [serv] Cloud response: Client is not registered with any user account.
+[2025-04-20T15:06:16.042 0368] [serv] Scheduling scheduled check upgrade. Check upgrade period changed from 42 to 29 minutes
+[2025-04-20T15:06:16.095 0368] [serv] C: -> 214 MB, 88 MB, 80 MB
+[2025-04-20T15:06:16.105 0368] [serv] w: 0; o: 79; b: 0; v: 0; c: 15
+[2025-04-20T15:06:17.090 0368] [serv] Successfully update last check update time to 2025-04-20T15:06:16.922+08:00
+[2025-04-20T15:11:14.321 0368] [serv] w: 0; o: 1; b: 0; v: 0; c: 15
+[2025-04-20T15:16:14.302 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T15:21:14.311 0368] [serv] w: 0; o: 7; b: 0; v: 0; c: 15
+[2025-04-20T15:26:14.313 0368] [serv] w: 0; o: 56; b: 0; v: 0; c: 15
+[2025-04-20T15:26:20.468 0418] [serv] Reverting folder C:\Users\vboxuser\Desktop\. Does not lock down this folder after reverting
+[2025-04-20T15:26:21.396 0170] [serv] Restoring folder C:\Users\vboxuser\Desktop start on Sun, 20 Apr 2025 03:26:21 PM and finish on Sun, 20 Apr 2025 03:26:21 PM. Total 2 files restored. Skipped 0 files.
+[2025-04-20T15:26:21.396 0368] [serv] UI process received notification and return Status OK
+[2025-04-20T15:26:21.396 0368] [serv] UI process received notification and return Status OK
+[2025-04-20T15:31:14.310 0368] [serv] w: 0; o: 85; b: 0; v: 0; c: 15
+[2025-04-20T15:36:15.363 0368] [serv] Scheduling scheduled check in. Check in period changed from 27 to 33 minutes
+[2025-04-20T15:36:15.363 0368] [serv] Scheduling uploading 1 activity log(s) to cloud service via WSS
+[2025-04-20T15:36:15.363 0368] [serv] Scheduling scheduled check upgrade. Check upgrade period changed from 29 to 34 minutes
+[2025-04-20T15:36:15.381 0368] [serv] C: -> 214 MB, 88 MB, 80 MB
+[2025-04-20T15:36:15.389 0368] [serv] w: 0; o: 9; b: 0; v: 0; c: 15
+[2025-04-20T15:36:15.614 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T15:36:15.614 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T15:36:15.614 0848] [serv] Successfully check in Cloud service. Status code is 200 and Msg is OK
+[2025-04-20T15:36:15.623 0848] [serv] Successfully update last check in time to 2025-04-20T15:36:15.511+08:00
+[2025-04-20T15:36:15.623 0848] [serv] Cloud response: Client is not registered with any user account.
+[2025-04-20T15:36:15.623 0848] [serv] Deleting activity logs after uploading to cloud service
+[2025-04-20T15:36:16.297 0368] [serv] Successfully update last check update time to 2025-04-20T15:36:16.197+08:00
+[2025-04-20T15:34:59.762 0368] [serv] w: 0; o: 8; b: 0; v: 0; c: 15
+[2025-04-20T15:39:59.744 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T15:44:59.771 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T15:49:59.759 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T15:54:59.744 0368] [serv] w: 0; o: 1; b: 0; v: 0; c: 15
+[2025-04-20T15:59:59.758 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:05:00.856 0368] [serv] Scheduling scheduled check in. Check in period changed from 33 to 19 minutes
+[2025-04-20T16:05:00.856 0368] [serv] There is no saved activity log
+[2025-04-20T16:05:00.856 0368] [serv] Scheduling scheduled check upgrade. Check upgrade period changed from 34 to 33 minutes
+[2025-04-20T16:05:00.856 0368] [serv] C: -> 214 MB, 88 MB, 80 MB
+[2025-04-20T16:05:00.864 0368] [serv] w: 0; o: 2; b: 0; v: 0; c: 15
+[2025-04-20T16:05:01.346 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T16:05:01.346 0848] [serv] Successfully check in Cloud service. Status code is 200 and Msg is OK
+[2025-04-20T16:05:01.408 0848] [serv] Successfully update last check in time to 2025-04-20T16:11:15.784+08:00
+[2025-04-20T16:05:01.408 0848] [serv] Cloud response: Client is not registered with any user account.
+[2025-04-20T16:05:01.872 0368] [serv] Successfully update last check update time to 2025-04-20T16:11:16.304+08:00
+[2025-04-20T16:09:59.756 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:14:59.756 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:19:59.754 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:25:00.897 0368] [serv] Scheduling scheduled check in. Check in period changed from 19 to 38 minutes
+[2025-04-20T16:25:00.897 0368] [serv] There is no saved activity log
+[2025-04-20T16:25:00.905 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:25:01.328 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T16:25:01.328 0848] [serv] Successfully check in Cloud service. Status code is 200 and Msg is OK
+[2025-04-20T16:25:01.359 0848] [serv] Successfully update last check in time to 2025-04-20T16:31:15.842+08:00
+[2025-04-20T16:25:01.359 0848] [serv] Cloud response: Client is not registered with any user account.
+[2025-04-20T16:29:59.768 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:17:28.757 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:22:28.761 0368] [serv] Scheduling scheduled check upgrade. Check upgrade period changed from 33 to 45 minutes
+[2025-04-20T16:22:28.761 0368] [serv] C: -> 214 MB, 88 MB, 80 MB
+[2025-04-20T16:22:28.774 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:22:29.854 0368] [serv] Successfully update last check update time to 2025-04-20T16:46:15.283+08:00
+[2025-04-20T16:27:28.742 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:32:28.759 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:37:28.745 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:42:28.758 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:47:29.867 0368] [serv] Scheduling scheduled check in. Check in period changed from 38 to 25 minutes
+[2025-04-20T16:47:29.867 0368] [serv] There is no saved activity log
+[2025-04-20T16:47:29.911 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:47:30.356 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T16:47:30.356 0848] [serv] Successfully check in Cloud service. Status code is 200 and Msg is OK
+[2025-04-20T16:47:30.367 0848] [serv] Successfully update last check in time to 2025-04-20T17:11:15.881+08:00
+[2025-04-20T16:47:30.367 0848] [serv] Cloud response: Client is not registered with any user account.
+[2025-04-20T16:52:28.738 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T16:57:28.751 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T17:02:28.769 0368] [serv] w: 0; o: 7; b: 0; v: 0; c: 15
+[2025-04-20T17:07:28.754 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T17:12:28.750 0368] [serv] Scheduling scheduled check upgrade. Check upgrade period changed from 45 to 23 minutes
+[2025-04-20T17:12:28.750 0368] [serv] C: -> 214 MB, 88 MB, 80 MB
+[2025-04-20T17:12:28.750 0368] [serv] w: 0; o: 14; b: 0; v: 0; c: 15
+[2025-04-20T17:12:30.800 0368] [serv] Successfully update last check update time to 2025-04-20T17:36:16.309+08:00
+[2025-04-20T16:53:36.850 0368] [serv] Scheduling scheduled check in. Check in period changed from 25 to 31 minutes
+[2025-04-20T16:53:36.864 0368] [serv] There is no saved activity log
+[2025-04-20T16:53:36.864 0368] [serv] w: 0; o: 5; b: 0; v: 0; c: 15
+[2025-04-20T16:53:37.313 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T16:53:37.313 0848] [serv] Successfully check in Cloud service. Status code is 200 and Msg is OK
+[2025-04-20T16:53:37.386 0848] [serv] Successfully update last check in time to 2025-04-20T17:41:15.878+08:00
+[2025-04-20T16:53:37.386 0848] [serv] Cloud response: Client is not registered with any user account.
+[2025-04-20T16:58:35.750 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T17:03:35.735 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T17:08:35.741 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T17:13:35.735 0368] [serv] Scheduling scheduled check upgrade. Check upgrade period changed from 23 to 37 minutes
+[2025-04-20T17:13:35.735 0368] [serv] C: -> 214 MB, 88 MB, 80 MB
+[2025-04-20T17:13:35.735 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T17:13:36.723 0368] [serv] Successfully update last check update time to 2025-04-20T18:01:15.239+08:00
+[2025-04-20T17:17:37.649 0C90] [wssc] Connection to the Cloud is broken, error is 12030
+[2025-04-20T17:17:37.649 1910] [wssc] Received request to disconnect and reconnect...
+[2025-04-20T17:17:37.649 1910] [wssc] Disconnected from the Cloud
+[2025-04-20T17:17:38.572 1910] [wssc] Connected to the Cloud
+[2025-04-20T17:17:40.803 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T17:17:41.986 0848] [serv] Scheduling on demand check in
+[2025-04-20T17:17:41.986 0848] [serv] There is no saved activity log
+[2025-04-20T17:17:41.986 0848] [serv] There is no saved security log
+[2025-04-20T17:17:42.195 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T17:17:42.195 0848] [serv] Successfully check in Cloud service. Status code is 200 and Msg is OK
+[2025-04-20T17:17:42.223 0848] [serv] Successfully update last check in time to 2025-04-21T00:42:24.446+08:00
+[2025-04-20T17:17:42.223 0848] [serv] Cloud response: Client is not registered with any user account.
+[2025-04-20T17:18:35.642 1288] [serv] Starting task to create system restore point...
+[2025-04-20T17:18:35.735 0368] [serv] Scheduling scheduled check upgrade. Check upgrade period changed from 37 to 42 minutes
+[2025-04-20T17:18:35.754 0368] [serv] C: -> 214 MB, 88 MB, 80 MB
+[2025-04-20T17:18:35.754 0368] [serv] Purging expired recycle files
+[2025-04-20T17:18:35.754 0368] [serv] Found 0 deleted files in NeuShield recycle bin
+[2025-04-20T17:18:35.782 0368] [serv] Successfully update client stats
+[2025-04-20T17:18:35.782 0368] [serv] Purged 0 out of 0 expired recycle files
+[2025-04-20T17:18:35.782 0368] [serv] Found 0 deleted engrams in NeuShield recycle bin
+[2025-04-20T17:18:35.782 0368] [serv] Purged 0 out of 0 expired data engrams
+[2025-04-20T17:18:35.801 0368] [serv] w: 0; o: 44; b: 0; v: 0; c: 15
+[2025-04-20T17:18:36.755 0368] [serv] Successfully update last check update time to 2025-04-21T00:43:18.978+08:00
+[2025-04-20T17:18:46.052 1288] [serv] Successfully created system restore point# 3
+[2025-04-20T17:18:46.584 1288] [serv] Disk space reserved for C: is UNBOUNDED
+[2025-04-20T17:18:46.584 1288] [serv] Disk space allocated (used) for C: is 3803 (2172) MB
+[2025-04-20T17:23:35.765 0368] [serv] w: 0; o: 3; b: 0; v: 0; c: 15
+[2025-04-20T17:25:16.919 184C] [serv] VSS volume \Device\NeuShieldVolumeShadowCopy1 for C: is ready
+[2025-04-20T17:25:16.919 184C] [serv] Starting Dama now session...
+[2025-04-20T17:25:16.926 184C] [serv] Dama now session finished
+[2025-04-20T17:25:16.931 184C] [serv] Detached VSS volume \Device\NeuShieldVolumeShadowCopy1
+[2025-04-20T17:25:16.931 0368] [serv] UI process received notification and return Status OK
+[2025-04-20T17:28:35.756 0368] [serv] w: 0; o: 272; b: 0; v: 0; c: 15
+[2025-04-20T17:33:35.751 0368] [serv] w: 0; o: 0; b: 0; v: 0; c: 15
+[2025-04-20T17:38:35.742 0368] [serv] w: 3; o: 166; b: 0; v: 0; c: 15
+[2025-04-20T17:43:35.745 0368] [serv] w: 3; o: 191; b: 0; v: 0; c: 15
+[2025-04-20T17:48:35.889 0368] [serv] w: 2; o: 179; b: 0; v: 0; c: 15
+[2025-04-20T17:35:20.976 0368] [serv] Scheduling scheduled check in. Check in period changed from 31 to 27 minutes
+[2025-04-20T17:35:20.978 0368] [serv] Scheduling uploading 1 activity log(s) to cloud service via WSS
+[2025-04-20T17:35:20.997 0368] [serv] w: 0; o: 67; b: 0; v: 0; c: 15
+[2025-04-20T17:35:21.430 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T17:35:21.430 0848] [serv] Successfully check in Cloud service. Status code is 200 and Msg is OK
+[2025-04-20T17:35:21.517 0848] [serv] Successfully update last check in time to 2025-04-21T01:18:19.719+08:00
+[2025-04-20T17:35:21.517 0848] [serv] Cloud response: Client is not registered with any user account.
+[2025-04-20T17:35:21.647 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T17:35:21.647 0848] [serv] Deleting activity logs after uploading to cloud service
+[2025-04-20T17:40:19.717 0368] [serv] w: 0; o: 160; b: 0; v: 0; c: 15
+[2025-04-20T17:45:19.711 0368] [serv] Scheduling scheduled check upgrade. Check upgrade period changed from 42 to 37 minutes
+[2025-04-20T17:45:19.734 0368] [serv] C: -> 215 MB, 88 MB, 80 MB
+[2025-04-20T17:45:19.749 0368] [serv] w: 2; o: 91; b: 0; v: 0; c: 15
+[2025-04-20T17:45:20.700 0368] [serv] Successfully update last check update time to 2025-04-21T01:28:18.996+08:00
+[2025-04-20T17:50:19.716 0368] [serv] w: 0; o: 30; b: 0; v: 0; c: 15
+[2025-04-20T17:55:19.722 0368] [serv] w: 0; o: 55; b: 0; v: 0; c: 15
+[2025-04-20T18:00:19.730 0368] [serv] w: 0; o: 64; b: 0; v: 0; c: 15
+[2025-04-20T18:05:20.872 0368] [serv] Scheduling scheduled check in. Check in period changed from 27 to 28 minutes
+[2025-04-20T18:05:20.886 0368] [serv] There is no saved activity log
+[2025-04-20T18:05:20.902 0368] [serv] w: 0; o: 162; b: 0; v: 0; c: 15
+[2025-04-20T18:05:21.089 0C90] [wssc] Received a message from the Cloud
+[2025-04-20T18:05:21.089 0848] [serv] Successfully check in Cloud service. Status code is 200 and Msg is OK
+[2025-04-20T18:05:21.169 0848] [serv] Successfully update last check in time to 2025-04-21T01:48:19.426+08:00
+[2025-04-20T18:05:21.169 0848] [serv] Cloud response: Client is not registered with any user account.
+[2025-04-20T18:10:19.709 0368] [serv] w: 1; o: 194; b: 0; v: 0; c: 15
+[2025-04-20T18:15:19.715 0368] [serv] w: 1; o: 45; b: 0; v: 0; c: 15
+[2025-04-20T18:20:19.720 0368] [serv] w: 2; o: 332; b: 0; v: 0; c: 15
+[2025-04-20T18:25:19.725 0368] [serv] Scheduling scheduled check upgrade. Check upgrade period changed from 37 to 19 minutes
+[2025-04-20T18:25:19.740 0368] [serv] C: -> 215 MB, 88 MB, 80 MB
+[2025-04-20T18:25:19.740 0368] [serv] w: 0; o: 133; b: 0; v: 0; c: 15
+[2025-04-20T18:25:20.753 0368] [serv] Successfully update last check update time to 2025-04-21T02:08:19.031+08:00
+[2025-04-20T18:30:19.707 0368] [serv] w: 0; o: 20; b: 0; v: 0; c: 15
+[2025-04-20T18:30:33.681 0368] [serv] UI process received notification and return Status OK
+[2025-04-20T18:30:58.632 0368] [serv] UI process received notification and return Status OK
