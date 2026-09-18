@@ -1,27 +1,25 @@
 1:"$Sreact.fragment"
-2:I[97367,["/_next/static/chunks/19_3ih06891n6.js"],"OutletBoundary"]
-3:"$Sreact.suspense"
-7:I[97367,["/_next/static/chunks/19_3ih06891n6.js"],"ViewportBoundary"]
-8:I[97367,["/_next/static/chunks/19_3ih06891n6.js"],"MetadataBoundary"]
-a:I[39756,["/_next/static/chunks/19_3ih06891n6.js"],"default"]
-b:I[37457,["/_next/static/chunks/19_3ih06891n6.js"],"default"]
-e:I[44298,["/_next/static/chunks/19_3ih06891n6.js"],"BlogLayout"]
+2:I[21810,["/_next/static/chunks/19_3ih06891n6.js","/_next/static/chunks/1f-b_5qcpj9ou.js"],"AboutPanel"]
+3:I[97367,["/_next/static/chunks/19_3ih06891n6.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+8:I[97367,["/_next/static/chunks/19_3ih06891n6.js"],"ViewportBoundary"]
+9:I[97367,["/_next/static/chunks/19_3ih06891n6.js"],"MetadataBoundary"]
+b:I[39756,["/_next/static/chunks/19_3ih06891n6.js"],"default"]
+c:I[37457,["/_next/static/chunks/19_3ih06891n6.js"],"default"]
+f:I[44298,["/_next/static/chunks/19_3ih06891n6.js"],"BlogLayout"]
+10:I[22016,["/_next/static/chunks/19_3ih06891n6.js"],""]
 :HL["/_next/static/chunks/1wtf7ejm884tf.css","style"]
-:HL["/_next/static/chunks/38a-o23jl66w5.css","style"]
-6:X
-d:X
-d:C
-0:{"buildId":"hN84J99fP1kUzcyycdLrj","data":[{"rsc":["$","$1","c",{"children":[["$","section",null,{"className":"about-panel","children":[["$","p",null,{"className":"eyebrow","children":"ABOUT"}],["$","h1",null,{"children":"方景玄（Mike / NPCMike）"}],["$","p",null,{"className":"about-intro","children":"我是一名專注於 Windows 系統安全、惡意程式與 C2、逆向工程及 OT/ICS 安全的資安研究者。 目前就讀輔仁大學人工智慧與資訊安全學士學位學程，並於 Leukocyte Lab（LKC-lab）擔任資安研究實習生。 我的工作從白箱漏洞研究、記憶體防禦與程式載入機制，一路延伸到工控場域的威脅建模與防禦監控。"}],["$","h2",null,{"children":"核心專長"}],["$","ul",null,{"className":"about-list about-list--expertise","children":[["$","li",null,{"children":"Windows Internals 與系統安全"}],["$","li",null,{"children":"Reverse Engineering"}],["$","li",null,{"children":"Malware 與 C2 研究"}],["$","li",null,{"children":"OT / ICS Security"}],["$","li",null,{"children":"Binary Exploitation"}],["$","li",null,{"children":"Web 與 SaaS 漏洞研究"}]]}],["$","h2",null,{"children":"研究與實作"}],["$","div",null,{"className":"about-projects","children":[["$","article",null,{"children":[["$","h3",null,{"children":"Windows 載入安全與主動式記憶體防禦"}],["$","p",null,{"children":"研究 DLL Search Order Hijacking、ASLR、CRT 初始化、SEH、Security Cookie 與 PE 載入流程， 並持續探索 Hardened ASLR 與主動式記憶體防禦方法。"}]]}],["$","article",null,{"children":[["$","h3",null,{"children":"WebPhantom 自動化檢測平台"}],["$","p",null,{"children":"開發網站自動化檢測平台，建立頁面蒐集、差異追蹤、風險報告流程，並探索 AI 輔助漏洞分析與安全測試自動化。"}]]}],["$","article",null,{"children":[["$","h3",null,{"children":"Open-source SaaS Vulnerability Research"}],["$","p",null,{"children":"對約 98 個開源 SaaS 專案進行本機白箱安全檢視，涵蓋 SSRF、IDOR、授權繞過、資訊洩露與程式碼執行風險； 以 Docker 建立端到端驗證、PoC、誤報排除與漏洞證據流程。"}]]}],["$","article",null,{"children":[["$","h3",null,{"children":"Reverse Engineering 與 OT/ICS"}],["$","p",null,{"children":"針對 Live2D Cubism 與 Windows 應用程式進行靜態、動態分析，並研究 Industroyer2 設定資料、 IEC 60870-5-104 目標與 SCADA 攻擊行為。"}]]}],["$","article",null,{"children":[["$","h3",null,{"children":"HexStrike AI 課程與安全實驗"}],["$","p",null,{"children":"規劃 AI Red Team、MCP 與自動化滲透測試內容，設計假設、漏洞驗證、PoC、Exploit 與黑箱測試實作 Lab。"}]]}],["$","article",null,{"children":[["$","h3",null,{"children":"CVE 復現與 C2 研究"}],["$","p",null,{"children":"完成 CVE-2025-29927 復現研究，並整理 C2 類型、常用平台、技術鏈與相關防禦觀察。"}]]}]]}],["$","h2",null,{"children":"成果與經歷"}],["$","ul",null,{"className":"about-list about-list--highlights","children":[["$","li",null,{"children":"AIS3 最佳專題獎：OT/ICS 惡意程式與 C2 實作，擔任隊長"}],["$","li",null,{"children":"HITCON 2026 KoH 第二名"}],["$","li",null,{"children":"AIS3 Pre-exam 第 31 / 329 名"}],["$","li",null,{"children":"台灣好厲駭高階培訓：Windows、OT 與 IoT 逆向防禦自動化"}],["$","li",null,{"children":"沙崙資安新秀決賽：EdgeX、Wazuh 與 MITRE ATT&CK for ICS"}]]}],["$","h2",null,{"children":"證照與學歷"}],["$","div",null,{"className":"about-credentials","children":[["$","p",null,{"children":[["$","strong",null,{"children":"輔仁大學"}],["$","br",null,{}],"人工智慧與資訊安全學士學位學程",["$","br",null,{}],"2023.09–2027.06"]}],["$","ul",null,{"children":[["$","li",null,{"children":"CEH"}],["$","li",null,{"children":"CEHP"}],["$","li",null,{"children":"iPAS 資訊安全工程師初級"}],["$","li",null,{"children":"JAM100"}]]}]]}],["$","p",null,{"className":"about-links","children":["$","a",null,{"href":"https://github.com/NPCMike","rel":"noreferrer","target":"_blank","children":"GitHub ↗"}]}]]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":"$@5","staleTime":"$6","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L7",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L8",null,{"children":["$","$3",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"關於 · NPCMike"}],["$","meta","1",{"name":"description","content":"關於 NPCMike：Windows 系統安全、惡意程式與 C2、逆向工程、漏洞研究及 OT/ICS 安全。"}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":"$@9","staleTime":"$6","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$La",null,{"parallelRouterKey":"children","template":["$","$Lb",null,{}]}]]}],"isPartial":"$@c","staleTime":"$6","varyParams":"$d"},{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1wtf7ejm884tf.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/38a-o23jl66w5.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/19_3ih06891n6.js","async":true}]],["$","html",null,{"lang":"zh-Hant","className":"noto_serif_tc_f71d6e02-module__MVHoVq__variable","children":["$","body",null,{"children":["$","$Le",null,{"children":["$","$La",null,{"parallelRouterKey":"children","template":["$","$Lb",null,{}],"notFound":[["$","section",null,{"className":"hero","children":["$Lf","$L10","$L11"]}],[]]}]}]}]}]]}],"isPartial":"$@12","staleTime":"$6","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@13","rootVaryParams":null,"needsRuntimeRequest":"$@14"}
-15:I[22016,["/_next/static/chunks/19_3ih06891n6.js"],""]
-4:null
-f:["$","p",null,{"className":"eyebrow","children":"404 / LOST IN THE RAIN"}]
-10:["$","h1",null,{"children":"這頁筆記不在這裡。"}]
-11:["$","$L15",null,{"href":"/","children":"← 回首頁"}]
-6:300
-14:true
-6:C
-13:0
-9:"$undefined"
-c:"$undefined"
-12:"$undefined"
-5:"$undefined"
+:HL["/_next/static/chunks/1th4kgob8yc-s.css","style"]
+7:X
+e:X
+e:C
+0:{"buildId":"nVwLZM-ntedfmoSO0TNkT","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],[["$","script","script-0",{"src":"/_next/static/chunks/1f-b_5qcpj9ou.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"關於 · NPCMike"}],["$","meta","1",{"name":"description","content":"關於 NPCMike：Windows 系統安全、惡意程式與 C2、逆向工程、漏洞研究及 OT/ICS 安全。"}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":"$@a","staleTime":"$7","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$Lb",null,{"parallelRouterKey":"children","template":["$","$Lc",null,{}]}]]}],"isPartial":"$@d","staleTime":"$7","varyParams":"$e"},{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1wtf7ejm884tf.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/1th4kgob8yc-s.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/19_3ih06891n6.js","async":true}]],["$","html",null,{"lang":"zh-Hant","className":"noto_serif_tc_f71d6e02-module__MVHoVq__variable","children":["$","body",null,{"children":["$","$Lf",null,{"children":["$","$Lb",null,{"parallelRouterKey":"children","template":["$","$Lc",null,{}],"notFound":[["$","section",null,{"className":"hero","children":[["$","p",null,{"className":"eyebrow","children":"404 / LOST IN THE RAIN"}],["$","h1",null,{"children":"這頁筆記不在這裡。"}],["$","$L10",null,{"href":"/","children":"← 回首頁"}]]}],[]]}]}]}]}]]}],"isPartial":"$@11","staleTime":"$7","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@12","rootVaryParams":null,"needsRuntimeRequest":"$@13"}
+5:null
+7:300
+13:true
+7:C
+12:0
+a:"$undefined"
+d:"$undefined"
+11:"$undefined"
+6:"$undefined"
