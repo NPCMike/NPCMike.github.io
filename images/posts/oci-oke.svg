@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-label="OCI OKE Kubernetes overview">
+  <rect width="720" height="360" fill="#0a1118"/>
+  <text x="360" y="32" fill="#d2d8e1" font-family="Consolas, monospace" font-size="16" text-anchor="middle">Oracle Kubernetes Engine (OKE)</text>
+  <rect x="200" y="55" width="320" height="50" rx="6" fill="#141008" stroke="#c9a227"/>
+  <text x="360" y="86" fill="#e4e5e8" font-size="13" text-anchor="middle">Managed Control Plane (Oracle)</text>
+  <path d="M360 105 L360 130" stroke="#6d8f7d" stroke-width="2"/>
+  <rect x="80" y="130" width="560" height="180" rx="6" fill="#121820" stroke="#6d8f7d"/>
+  <text x="360" y="155" fill="#a3abb5" font-size="12" text-anchor="middle">Your VCN - Private Subnet</text>
+  <rect x="120" y="170" width="140" height="60" rx="4" fill="#1a2830" stroke="#5a8fbd"/>
+  <text x="190" y="205" fill="#e4e5e8" font-size="11" text-anchor="middle">Worker Node</text>
+  <rect x="290" y="170" width="140" height="60" rx="4" fill="#1a2830" stroke="#5a8fbd"/>
+  <text x="360" y="205" fill="#e4e5e8" font-size="11" text-anchor="middle">Worker Node</text>
+  <rect x="460" y="170" width="140" height="60" rx="4" fill="#1a2830" stroke="#5a8fbd"/>
+  <text x="530" y="205" fill="#e4e5e8" font-size="11" text-anchor="middle">Worker Node</text>
+  <rect x="180" y="250" width="360" height="44" rx="4" fill="#0c141c" stroke="#b0c2d02d"/>
+  <text x="360" y="278" fill="#bdd2c7" font-size="11" text-anchor="middle">Dynamic Group + Policy -&gt; pull from OCIR / Vault</text>
+  <text x="360" y="335" fill="#7a8794" font-size="11" text-anchor="middle">API endpoint: public (dev) or private (prod)</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" role="img" aria-label="Windows I/O device stack">
+  <rect width="720" height="480" fill="#0a1118"/>
+  <text x="360" y="32" fill="#d2d8e1" font-family="Consolas, monospace" font-size="16" text-anchor="middle">I/O Device Stack &amp; IRP Flow</text>
+  <text x="120" y="70" fill="#a3abb5" font-size="12">User Mode</text>
+  <rect x="80" y="80" width="560" height="44" rx="4" fill="#1a2830" stroke="#5a8fbd"/>
+  <text x="360" y="108" fill="#e4e5e8" font-size="13" text-anchor="middle">CreateFile / ReadFile / WriteFile</text>
+  <path d="M360 124 L360 150" stroke="#6d8f7d" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="120" y="168" fill="#a3abb5" font-size="12">Kernel Mode - top to bottom</text>
+  <rect x="180" y="178" width="360" height="40" rx="4" fill="#2a1818" stroke="#8b4049"/>
+  <text x="360" y="204" fill="#e4e5e8" font-size="12" text-anchor="middle">Filter Driver (EDR / Minifilter)</text>
+  <rect x="180" y="228" width="360" height="40" rx="4" fill="#1a2028" stroke="#6d8f7d"/>
+  <text x="360" y="254" fill="#e4e5e8" font-size="12" text-anchor="middle">FDO - Functional Device Object</text>
+  <rect x="180" y="278" width="360" height="40" rx="4" fill="#1a2028" stroke="#6d8f7d"/>
+  <text x="360" y="304" fill="#e4e5e8" font-size="12" text-anchor="middle">Lower Filter / Class Driver</text>
+  <rect x="180" y="328" width="360" height="40" rx="4" fill="#1a2028" stroke="#6d8f7d"/>
+  <text x="360" y="354" fill="#e4e5e8" font-size="12" text-anchor="middle">PDO - Physical Device Object</text>
+  <rect x="180" y="378" width="360" height="40" rx="4" fill="#141008" stroke="#c9a227"/>
+  <text x="360" y="404" fill="#e4e5e8" font-size="12" text-anchor="middle">Hardware / Bus Driver</text>
+  <text x="560" y="250" fill="#7a8794" font-size="11">IRP v</text>
+  <text x="560" y="380" fill="#7a8794" font-size="11">Complete ^</text>
+  <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#6d8f7d"/></marker></defs>
+</svg>

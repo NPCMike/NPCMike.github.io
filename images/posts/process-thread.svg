@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-label="Process and Thread relationship">
+  <rect width="720" height="420" fill="#0a1118"/>
+  <text x="360" y="32" fill="#d2d8e1" font-family="Consolas, monospace" font-size="16" text-anchor="middle">Process vs Thread</text>
+  <rect x="40" y="60" width="640" height="300" rx="8" fill="#121820" stroke="#6d8f7d" stroke-width="2"/>
+  <text x="360" y="88" fill="#a3abb5" font-size="13" text-anchor="middle">PROCESS - virtual address space, handles, security context</text>
+  <rect x="80" y="110" width="180" height="220" rx="6" fill="#1a2830" stroke="#5a8fbd"/>
+  <text x="170" y="140" fill="#e4e5e8" font-size="13" text-anchor="middle">Thread 1</text>
+  <text x="170" y="165" fill="#a3abb5" font-size="11" text-anchor="middle">TEB</text>
+  <text x="170" y="185" fill="#a3abb5" font-size="11" text-anchor="middle">Stack</text>
+  <text x="170" y="205" fill="#a3abb5" font-size="11" text-anchor="middle">Context</text>
+  <rect x="270" y="110" width="180" height="220" rx="6" fill="#1a2830" stroke="#5a8fbd"/>
+  <text x="360" y="140" fill="#e4e5e8" font-size="13" text-anchor="middle">Thread 2</text>
+  <text x="360" y="165" fill="#a3abb5" font-size="11" text-anchor="middle">TEB</text>
+  <text x="360" y="185" fill="#a3abb5" font-size="11" text-anchor="middle">Stack</text>
+  <text x="360" y="205" fill="#a3abb5" font-size="11" text-anchor="middle">Context</text>
+  <rect x="460" y="110" width="180" height="220" rx="6" fill="#1a2830" stroke="#5a8fbd"/>
+  <text x="550" y="140" fill="#e4e5e8" font-size="13" text-anchor="middle">Thread N</text>
+  <text x="550" y="165" fill="#a3abb5" font-size="11" text-anchor="middle">TEB</text>
+  <text x="550" y="185" fill="#a3abb5" font-size="11" text-anchor="middle">Stack</text>
+  <text x="550" y="205" fill="#a3abb5" font-size="11" text-anchor="middle">Context</text>
+  <rect x="120" y="260" width="480" height="50" rx="4" fill="#0c141c" stroke="#b0c2d02d"/>
+  <text x="360" y="290" fill="#bdd2c7" font-size="12" text-anchor="middle">Shared: PEB / VAD / Handles / Image base</text>
+  <text x="360" y="395" fill="#7a8794" font-size="11" text-anchor="middle">gs:[0x60] -&gt; TEB -&gt; TEB+0x30 -&gt; PEB (x64)</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" aria-label="Virtual address space layout">
+  <rect width="720" height="380" fill="#0a1118"/>
+  <text x="360" y="32" fill="#d2d8e1" font-family="Consolas, monospace" font-size="16" text-anchor="middle">x64 Virtual Address Space (user)</text>
+  <rect x="280" y="50" width="160" height="280" rx="4" fill="#121820" stroke="#6d8f7d"/>
+  <g font-family="Consolas, monospace" font-size="11" fill="#e4e5e8">
+    <rect x="290" y="58" width="140" height="28" fill="#2a1818" stroke="#8b4049"/><text x="360" y="76" text-anchor="middle">0x7FF... kernel</text>
+    <rect x="290" y="90" width="140" height="28" fill="#1a2830" stroke="#5a8fbd"/><text x="360" y="108" text-anchor="middle">Stack v</text>
+    <rect x="290" y="122" width="140" height="28" fill="#152018" stroke="#6d8f7d"/><text x="360" y="140" text-anchor="middle">Heap</text>
+    <rect x="290" y="154" width="140" height="28" fill="#1a2028" stroke="#6d8f7d"/><text x="360" y="172" text-anchor="middle">DLL mappings</text>
+    <rect x="290" y="186" width="140" height="28" fill="#141008" stroke="#c9a227"/><text x="360" y="204" text-anchor="middle">Image (EXE)</text>
+    <rect x="290" y="218" width="140" height="28" fill="#152018" stroke="#6d8f7d"/><text x="360" y="236" text-anchor="middle">Injected RWX?</text>
+    <rect x="290" y="250" width="140" height="28" fill="#1a2830" stroke="#5a8fbd"/><text x="360" y="268" text-anchor="middle">Mapped files</text>
+    <rect x="290" y="282" width="140" height="40" fill="#0c141c" stroke="#b0c2d02d"/><text x="360" y="306" text-anchor="middle">0x0000...0000</text>
+  </g>
+  <text x="80" y="120" fill="#a3abb5" font-size="12">VAD tree</text>
+  <text x="80" y="140" fill="#a3abb5" font-size="12">describes each</text>
+  <text x="80" y="160" fill="#a3abb5" font-size="12">region</text>
+  <text x="480" y="200" fill="#bdd2c7" font-size="11">RW -&gt; RX pattern</text>
+  <text x="480" y="218" fill="#bdd2c7" font-size="11">= injection signal</text>
+</svg>
